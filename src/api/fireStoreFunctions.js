@@ -8,7 +8,7 @@ import {
   doc,
   updateDoc,
 } from "firebase/firestore";
-import { db } from "../../firebaseConfig";
+import { db } from "../firebaseConfig";
 
 //Fn dodawania dokumentu
 export const addDocument = async (collectionName, data) => {
@@ -45,7 +45,7 @@ export async function addDocumentToCollection(collectionName, data) {
 export const getDocument = async (collectionName) => {
   try {
     const querySnapshot = await getDocs(collection(db, collectionName));
-    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data }));
+    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
   } catch (error) {
     console.error("error fetching document", error);
     throw error;
@@ -78,7 +78,7 @@ export async function getDocumentsFromCollection(collectionName) {
 //Fn to delete document
 export const deleteDocument = async (collectionName, id) => {
   try {
-    await deleteDoc(doc(db.collectionName, id));
+    await deleteDoc(doc(db, collectionName, id));
     console.log("Document deleted");
   } catch (error) {
     console.error("Error deleting document:", error);
