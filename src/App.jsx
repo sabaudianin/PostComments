@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./components/Home";
 import { Comments } from "./components/Comments";
-import { Products } from "./components/Products";
+import { Posts } from "./components/Posts";
 
 export const App = () => {
   return (
@@ -12,8 +12,8 @@ export const App = () => {
           element={<Home />}
         />
         <Route
-          path="/product/:id"
-          element={<Products />}
+          path="/posts/:id"
+          element={<Posts />}
         />
         <Route
           path="/comments"

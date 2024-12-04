@@ -9,12 +9,10 @@ export const Comments = () => {
       <Typography variant="h5">Comments</Typography>
       <List>
         <ListItem>
-            <ListItemText
-            primary={}
-            secondary={}
-            />
-
-            
+          <ListItemText
+            primary={"koment1"}
+            secondary={"koment2"}
+          />
         </ListItem>
       </List>
     </Paper>

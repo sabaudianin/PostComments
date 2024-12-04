@@ -6,53 +6,54 @@ import {
   updateDocument,
 } from "../api/fireStoreFunctions";
 
-export const useGetProduct = (collectionName) => {
+export const useGetPosts = (collectionName = "posts") => {
   return useQuery({
     queryKey: [collectionName],
     queryFn: () => getDocuments(collectionName),
   });
 };
 
-export const useAddProduct = () => {
+export const useAddPost = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: ({ collectionName, data }) => addDocument(collectionName, data),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["products"] }),
+    onSuccess: (_, { collectionName }) =>
+      queryClient.invalidateQueries({ queryKey: [collectionName] }),
   });
   return {
-    addProduct: mutation.mutate,
+    addPost: mutation.mutate,
     isAdding: mutation.isLoading,
     isAddingError: mutation.isError,
     addError: mutation.error,
   };
 };
 
-export const useDeleteProduct = () => {
+export const useDeletePost = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationKey: ["products"],
-    mutationFn: ({ collectionName, productId }) =>
-      deleteDocument(collectionName, productId),
-    onSuccess: () => queryClient.invalidateQueries(["products"]),
+    mutationFn: ({ collectionName, postId }) =>
+      deleteDocument(collectionName, postId),
+    onSuccess: (_, { collectionName }) =>
+      queryClient.invalidateQueries([collectionName]),
   });
   return {
-    deleteProduct: mutation.mutate,
+    deletePost: mutation.mutate,
     isDeleting: mutation.isLoading,
     isDeletingError: mutation.isError,
     deleteError: mutation.error,
   };
 };
 
-export const useUpdateProduct = () => {
+export const useUpdatePost = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationKey: ["products"],
-    mutationFn: ({ collectionName, productId, updatedData }) =>
-      updateDocument(collectionName, productId, updatedData),
-    onSuccess: () => queryClient.invalidateQueries(["products"]),
+    mutationFn: ({ collectionName, postId, updatedData }) =>
+      updateDocument(collectionName, postId, updatedData),
+    onSuccess: (_, { collectionName }) =>
+      queryClient.invalidateQueries([collectionName]),
   });
   return {
-    updateProduct: mutation.mutate,
+    updatePost: mutation.mutate,
     isUpdating: mutation.isLoading,
     isUpdatingError: mutation.isError,
     updateError: mutation.error,
