@@ -12,11 +12,11 @@ export const App = () => {
           element={<Home />}
         />
         <Route
-          path="/posts/:id"
+          path="/posts"
           element={<PostsDetailWrapper />}
         />
         <Route
-          path="/comments"
+          path="/comments/1"
           element={<Comments />}
         />
       </Routes>

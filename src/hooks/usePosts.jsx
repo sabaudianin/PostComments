@@ -65,6 +65,6 @@ export const useGetPostById = (id, collectionName) => {
   return useQuery({
     queryKey: [collectionName, id],
     queryFn: () => getDocumentById(collectionName, id),
-    enabled: !!id, // Zapytanie będzie wykonane tylko, jeśli id jest prawidłowe
+    enabled: !!id,
   });
 };
