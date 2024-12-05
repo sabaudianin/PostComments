@@ -22,6 +22,56 @@ export const addDocument = async (collectionName, data) => {
   }
 };
 
+//Fn do pobierania dokumentów z kolekcji
+export const getDocuments = async (collectionName) => {
+  try {
+    const querySnapshot = await getDocs(collection(db, collectionName));
+    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  } catch (error) {
+    console.error("error fetching document", error);
+    throw error;
+  }
+};
+
+//Fn to delete document
+export const deleteDocument = async (collectionName, id) => {
+  try {
+    await deleteDoc(doc(db, collectionName, id));
+    console.log("Document deleted");
+  } catch (error) {
+    console.error("Error deleting document:", error);
+    throw error;
+  }
+};
+
+//Fn to Update
+export const updateDocument = async (collectionName, id, updatedData) => {
+  try {
+    const docRef = doc(db, collectionName, id);
+    await updateDoc(docRef, updatedData);
+    console.log("DOcument updated");
+  } catch (error) {
+    console.error("Error updating document: ", error);
+    throw error;
+  }
+};
+
+//Fn get post by id
+export const getDocumentById = async (collectionName, id) => {
+  try {
+    const docRef = doc(db, collectionName, id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return { id: docSnap.id, ...docSnap.data() };
+    } else {
+      throw new Error(`Document with ${id} not found in ${collectionName}`);
+    }
+  } catch (error) {
+    console.error("error fetching documnet by ID", error);
+    throw error;
+  }
+};
+
 // Function to add a document to a collection
 export async function addDocumentToCollection(collectionName, data) {
   try {
@@ -42,16 +92,42 @@ export async function addDocumentToCollection(collectionName, data) {
   }
 }
 
-//Fn do pobierania dokumentów z kolekcji
-export const getDocument = async (collectionName) => {
+// Function to update a document in a collection
+export async function updateDocumentinCollection(
+  collectionName,
+  documentId,
+  updatedData
+) {
   try {
-    const querySnapshot = await getDocs(collection(db, collectionName));
-    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    // Get a reference to the document
+    const docRef = doc(db, collectionName, documentId);
+
+    // Update the document
+    await updateDoc(docRef, updatedData);
+
+    console.log("Document updated successfully!");
+    return docRef; // Return the document reference for further operations
   } catch (error) {
-    console.error("error fetching document", error);
+    console.error("Error updating document: ", error);
     throw error;
   }
-};
+}
+
+// Function to delete a document from a collection
+export async function deleteDocumentFromCollection(collectionName, documentId) {
+  try {
+    // Get a reference to the document
+    const docRef = doc(db, collectionName, documentId);
+
+    // Delete the document
+    await deleteDoc(docRef);
+
+    console.log("Document deleted successfully!");
+  } catch (error) {
+    console.error("Error deleting document: ", error);
+    throw error;
+  }
+}
 
 // Function to get documents from a collection
 export async function getDocumentsFromCollection(collectionName) {
@@ -75,79 +151,3 @@ export async function getDocumentsFromCollection(collectionName) {
     throw error;
   }
 }
-
-//Fn to delete document
-export const deleteDocument = async (collectionName, id) => {
-  try {
-    await deleteDoc(doc(db, collectionName, id));
-    console.log("Document deleted");
-  } catch (error) {
-    console.error("Error deleting document:", error);
-    throw error;
-  }
-};
-
-// Function to delete a document from a collection
-export async function deleteDocumentFromCollection(collectionName, documentId) {
-  try {
-    // Get a reference to the document
-    const docRef = doc(db, collectionName, documentId);
-
-    // Delete the document
-    await deleteDoc(docRef);
-
-    console.log("Document deleted successfully!");
-  } catch (error) {
-    console.error("Error deleting document: ", error);
-    throw error;
-  }
-}
-
-//Fn to Update
-export const updateDocument = async (collectionName, id, updatedData) => {
-  try {
-    const docRef = doc(db, collectionName, id);
-    await updateDoc(docRef, updatedData);
-    console.log("DOcument updated");
-  } catch (error) {
-    console.error("Error updating document: ", error);
-    throw error;
-  }
-};
-
-// Function to update a document in a collection
-export async function updateDocumentinCollection(
-  collectionName,
-  documentId,
-  updatedData
-) {
-  try {
-    // Get a reference to the document
-    const docRef = doc(db, collectionName, documentId);
-
-    // Update the document
-    await updateDoc(docRef, updatedData);
-
-    console.log("Document updated successfully!");
-    return docRef; // Return the document reference for further operations
-  } catch (error) {
-    console.error("Error updating document: ", error);
-    throw error;
-  }
-}
-
-//Fn get post by id
-export const getDocumentById = async (collectionName, id) => {
-  try {
-    const docRef = doc(db, collectionName, id);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      return { id: docSnap.id, ...docSnap.data() };
-    } else {
-      throw new Error(`Document with ${id} not found in ${collectionName}`);
-    }
-  } catch (error) {
-    console.error("error fetching documnet by ID", error);
-    throw error;
-  }
-};

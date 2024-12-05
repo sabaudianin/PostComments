@@ -7,10 +7,18 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { useGetPosts } from "../hooks/usePosts";
+import { useForm } from "react-hook-form";
+import { useGetPosts, useAddPost } from "../hooks/usePosts";
 
 export const Comments = () => {
-  const { data } = useGetPosts();
+  const { data, isLoading, isError, error } = useGetPosts();
+  const { mutate: addPost } = useAddPost();
+  const { register, handleSubmit, formState: errors } = useForm();
+
+  const handleAddComment = (data) => {
+    addPost({ collectionName: "comments", data });
+  };
+
   return (
     <>
       <Paper
@@ -33,10 +41,16 @@ export const Comments = () => {
         elevation={3}
         sx={{ m: 2, p: 2 }}
       >
-        <form>
-          <TextField />
-          <TextField />
-          <Button>SUbmit</Button>
+        <form onSubmit={handleSubmit(handleAddComment)}>
+          <TextField
+            placeholder="Author"
+            {...register("author")}
+          />
+          <TextField
+            placeholder="Description"
+            {...register("description")}
+          />
+          <Button type="submit">Submit</Button>
         </form>
       </Paper>
     </>

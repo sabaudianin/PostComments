@@ -1,66 +1,53 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
-  getDocument,
+  getDocuments,
   addDocument,
   deleteDocument,
   updateDocument,
   getDocumentById,
 } from "../api/fireStoreFunctions";
 
+// Get all posts from a collection
 export const useGetPosts = (collectionName) => {
   return useQuery({
     queryKey: [collectionName],
-    queryFn: () => getDocument(collectionName),
+    queryFn: () => getDocuments(collectionName),
   });
 };
 
+// Add a new post
 export const useAddPost = () => {
   const queryClient = useQueryClient();
-  const mutation = useMutation({
+  return useMutation({
     mutationFn: ({ collectionName, data }) => addDocument(collectionName, data),
     onSuccess: (_, { collectionName }) =>
-      queryClient.invalidateQueries({ queryKey: [collectionName] }),
+      queryClient.invalidateQueries([collectionName]),
   });
-  return {
-    addPost: mutation.mutate,
-    isAdding: mutation.isLoading,
-    isAddingError: mutation.isError,
-    addError: mutation.error,
-  };
 };
 
+// Delete a post
 export const useDeletePost = () => {
   const queryClient = useQueryClient();
-  const mutation = useMutation({
+  return useMutation({
     mutationFn: ({ collectionName, postId }) =>
       deleteDocument(collectionName, postId),
     onSuccess: (_, { collectionName }) =>
       queryClient.invalidateQueries([collectionName]),
   });
-  return {
-    deletePost: mutation.mutate,
-    isDeleting: mutation.isLoading,
-    isDeletingError: mutation.isError,
-    deleteError: mutation.error,
-  };
 };
 
+// Update a post
 export const useUpdatePost = () => {
   const queryClient = useQueryClient();
-  const mutation = useMutation({
+  return useMutation({
     mutationFn: ({ collectionName, postId, updatedData }) =>
       updateDocument(collectionName, postId, updatedData),
     onSuccess: (_, { collectionName }) =>
       queryClient.invalidateQueries([collectionName]),
   });
-  return {
-    updatePost: mutation.mutate,
-    isUpdating: mutation.isLoading,
-    isUpdatingError: mutation.isError,
-    updateError: mutation.error,
-  };
 };
 
+// Get post by ID
 export const useGetPostById = (id, collectionName) => {
   return useQuery({
     queryKey: [collectionName, id],
