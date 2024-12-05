@@ -6,7 +6,7 @@ export const Posts = () => {
   console.log(id);
   return (
     <Container>
-      <Typography variant="h5">Product</Typography>
+      <Typography variant="h5">Post</Typography>
     </Container>
   );
 };

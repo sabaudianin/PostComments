@@ -2,6 +2,7 @@ import {
   collection,
   addDoc,
   getDocs,
+  getDoc,
   query,
   where,
   deleteDoc,
@@ -134,3 +135,19 @@ export async function updateDocumentinCollection(
     throw error;
   }
 }
+
+//Fn get post by id
+export const getDocumentById = async (collectionName, id) => {
+  try {
+    const docRef = doc(db, collectionName, id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return { id: docSnap.id, ...docSnap.data() };
+    } else {
+      throw new Error(`Document with ${id} not found in ${collectionName}`);
+    }
+  } catch (error) {
+    console.error("error fetching documnet by ID", error);
+    throw error;
+  }
+};

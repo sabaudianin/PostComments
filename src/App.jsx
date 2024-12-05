@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./components/Home";
 import { Comments } from "./components/Comments";
-import { Posts } from "./components/Posts";
+import { PostsDetailWrapper } from "./components/PostDetailWrapper";
 
 export const App = () => {
   return (
@@ -13,7 +13,7 @@ export const App = () => {
         />
         <Route
           path="/posts/:id"
-          element={<Posts />}
+          element={<PostsDetailWrapper />}
         />
         <Route
           path="/comments"
