@@ -24,11 +24,24 @@ export const addDocument = async (collectionName, data) => {
 
 //Fn do pobierania dokumentów z kolekcji
 export const getDocuments = async (collectionName) => {
+  if (!collectionName) {
+    throw new Error("Collection name is required to fetch documents.");
+  }
+
   try {
     const querySnapshot = await getDocs(collection(db, collectionName));
-    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    console.log("QuerySnapshot:", querySnapshot.docs);
+
+    const documents = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    console.log("Mapped documents:", documents);
+
+    return documents;
   } catch (error) {
-    console.error("error fetching document", error);
+    console.error("Error fetching documents:", error.message);
     throw error;
   }
 };

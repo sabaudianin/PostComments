@@ -11,7 +11,14 @@ import {
 export const useGetPosts = (collectionName) => {
   return useQuery({
     queryKey: [collectionName],
-    queryFn: () => getDocuments(collectionName),
+    queryFn: async () => {
+      const data = await getDocuments(collectionName);
+      console.log("useQuery: received data", data);
+      return data;
+    },
+    onError: (error) => {
+      console.error("useQuery: error fetching data", error);
+    },
   });
 };
 

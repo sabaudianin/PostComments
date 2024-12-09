@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./components/Home";
-import { Comments } from "./components/Comments";
-import { PostsDetailWrapper } from "./components/PostDetailWrapper";
+import { Comments } from "./components/Comments/Comments";
+import { PostsWrapper } from "./components/Posts/PostsWrapper";
+import { CommentsContainer } from "./components/Comments/CommentsContainer";
 
 export const App = () => {
   return (
@@ -12,12 +13,12 @@ export const App = () => {
           element={<Home />}
         />
         <Route
-          path="/posts"
-          element={<PostsDetailWrapper />}
+          path="/posts/:id"
+          element={<PostsWrapper />}
         />
         <Route
           path="/comments/1"
-          element={<Comments />}
+          element={<CommentsContainer />}
         />
       </Routes>
     </BrowserRouter>
