@@ -6,7 +6,7 @@ export const PostList = ({ data }) => {
     <Box
       sx={{
         backgroundColor: "#f2f2f2",
-        padding: "2rem",
+        padding: "1rem",
         borderRadius: "8px",
       }}
     >

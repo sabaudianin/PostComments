@@ -4,26 +4,12 @@ import { Link } from "react-router-dom";
 export const PostItem = ({ post }) => {
   const { id, title, content, author } = post;
 
-  // Funkcja generująca losowy kolor
-  const generateRandomColor = () => {
-    const colors = [
-      "#FFC107", // Amber
-      "#03A9F4", // Light Blue
-      "#4CAF50", // Green
-      "#FF5722", // Deep Orange
-      "#9C27B0", // Purple
-    ];
-    return colors[Math.floor(Math.random() * colors.length)];
-  };
-
-  const randomColor = generateRandomColor();
-
   return (
     <ListItem
       sx={{
         borderBottom: "2px solid #eee",
         padding: "2rem",
-        backgroundColor: randomColor,
+        backgroundColor: "#f2f2f2",
         borderRadius: "8px",
         boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
         "&:hover": {
@@ -79,10 +65,10 @@ export const PostItem = ({ post }) => {
             marginTop: "1rem",
             alignSelf: "flex-start",
             backgroundColor: "white",
-            color: randomColor,
+            color: "red",
             fontWeight: "bold",
             "&:hover": {
-              backgroundColor: randomColor,
+              backgroundColor: "red",
               color: "white",
             },
           }}

@@ -50,7 +50,7 @@ export const Home = () => {
           HOME
         </Link>
         <Link
-          to="/posts/1"
+          to="/posts/"
           component={NavLink}
           sx={{
             textDecoration: "none",
@@ -68,7 +68,7 @@ export const Home = () => {
           Posts
         </Link>
         <Link
-          to="/comments/1"
+          to="/comments/"
           component={NavLink}
           sx={{
             textDecoration: "none",
