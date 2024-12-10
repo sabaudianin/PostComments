@@ -14,6 +14,7 @@ export const Comments = ({
 
   return (
     <>
+      <CommentForm handleAddComment={handleAddComment} />
       <Paper
         elevation={3}
         sx={{ m: 2, p: 2 }}
@@ -25,7 +26,6 @@ export const Comments = ({
           <CommentsList data={data} />
         )}
       </Paper>
-      <CommentForm handleAddComment={handleAddComment} />
     </>
   );
 };

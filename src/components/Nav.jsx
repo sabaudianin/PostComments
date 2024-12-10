@@ -1,12 +1,20 @@
-import { AppBar, Toolbar, Typography, Box, TextField } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Box,
+  TextField,
+  Link,
+} from "@mui/material";
+
+import { NavLink } from "react-router-dom";
 
 export const Nav = () => {
   return (
     <AppBar
       position="static"
       sx={{
-        background:
-          "linear-gradient(90deg, rgba(125,193,232,1) 10%, rgba(71,29,253,1) 50%)",
+        background: "#1e90ff",
         padding: "0.5rem",
       }}
     >
@@ -17,16 +25,25 @@ export const Nav = () => {
           alignItems: "center",
         }}
       >
-        <Typography
-          variant="h6"
-          component="div"
+        <Link
+          to="/"
+          component={NavLink}
           sx={{
-            fontWeight: "bold",
-            fontSize: { xs: "1rem", sm: "1.5rem" },
+            textDecoration: "none",
+
+            padding: "0.5rem 1rem",
+            fontSize: { xs: "1rem", sm: "1.2rem" },
+            borderRadius: "8px",
+            background: "#bc8f8f",
+            color: "white",
+            textAlign: "center",
+            "&:hover": {
+              background: "#d2b48 ",
+            },
           }}
         >
           CommentPost
-        </Typography>
+        </Link>
 
         <Box
           sx={{

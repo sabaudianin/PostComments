@@ -12,6 +12,7 @@ export const Home = () => {
         justifyContent: "center",
         minHeight: "100vh",
         padding: "2rem",
+        background: "#C0C0C0",
       }}
     >
       <Typography

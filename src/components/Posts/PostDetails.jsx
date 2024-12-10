@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import { Typography, Paper, Box } from "@mui/material";
+import { Typography, Paper, Box, Container } from "@mui/material";
 import { useGetPostById } from "../../hooks/usePosts";
+import { CommentsContainer } from "../Comments/CommentsContainer";
 
 export const PostDetails = () => {
   const { id } = useParams();
@@ -13,27 +14,30 @@ export const PostDetails = () => {
 
   console.log("Posts", post);
   return (
-    <Box>
-      <Paper
-        elevation={3}
-        sx={{
-          padding: "2rem",
-          marginBottom: "2rem",
-        }}
-      >
-        <Typography
-          variant="h4"
-          component="h1"
+    <Container>
+      <Box>
+        <Paper
+          elevation={3}
           sx={{
-            fontWeight: "bold",
-            marginBottom: "1rem",
+            padding: "2rem",
+            marginBottom: "2rem",
           }}
         >
-          {post.title}
-        </Typography>
-        <Typography variant="body1">{post.content}</Typography>
-        <Typography variant="caption">Author: {post.author}</Typography>
-      </Paper>
-    </Box>
+          <Typography
+            variant="h4"
+            component="h1"
+            sx={{
+              fontWeight: "bold",
+              marginBottom: "1rem",
+            }}
+          >
+            {post.title}
+          </Typography>
+          <Typography variant="body1">{post.content}</Typography>
+          <Typography variant="caption">Author: {post.author}</Typography>
+        </Paper>
+      </Box>
+      <CommentsContainer />
+    </Container>
   );
 };
