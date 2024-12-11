@@ -1,39 +1,71 @@
-import { List, Paper, Typography, Box, TextField, Button } from "@mui/material";
+import { useState } from "react";
+import { List, Paper, Typography, Box, Container, Button } from "@mui/material";
 import { MdAddComment } from "react-icons/md";
 
 import { PostItem } from "./PostItem";
+import { PostForm } from "./PostForm";
 
 export const PostList = ({ data }) => {
+  const [showForm, setShowForm] = useState(false);
+
   return (
-    <Box
+    <Container
       sx={{
-        backgroundColor: "#80e5ff",
-        padding: "1rem",
+        backgroundColor: "#fff",
+        padding: "2rem",
         borderRadius: "8px",
+        boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+        marginTop: "2rem",
       }}
     >
       <Box
         sx={{
           display: "flex",
+          justifyContent: "space-between",
           alignItems: "center",
+          marginBottom: "1.5rem",
         }}
       >
-        <Button>
-          <MdAddComment style={{ fontSize: "2rem", color: "red" }} />
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: "bold",
+            fontSize: { xs: "1.5rem", sm: "2rem" },
+          }}
+        >
+          Posts List :
+        </Typography>
+        <Button
+          onClick={() => setShowForm(!showForm)} //
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            padding: "0.75rem 1rem",
+            fontWeight: "bold",
+            textTransform: "none",
+            backgroundColor: "#1976d2",
+            color: "white",
+            "&:hover": {
+              backgroundColor: "#115293",
+            },
+          }}
+        >
+          <MdAddComment style={{ fontSize: "1.5rem" }} />
           Add Post
         </Button>
       </Box>
-      <Typography
-        variant="h4"
-        sx={{
-          textAlign: "center",
-          margin: "1rem",
-          fontWeight: "bold",
-          fontSize: { xs: "1.5rem", sm: "2rem" },
-        }}
-      >
-        Posts List
-      </Typography>
+
+      {showForm && (
+        <Box
+          sx={{
+            marginBottom: "2rem",
+          }}
+        >
+          <PostForm />
+        </Box>
+      )}
+
       <List
         sx={{
           display: "flex",
@@ -48,13 +80,14 @@ export const PostList = ({ data }) => {
             sx={{
               padding: "1.5rem",
               borderRadius: "8px",
-              backgroundColor: "#808080",
+              backgroundColor: "#f5f5f5",
+              boxShadow: "0px 2px 6px rgba(0,0,0,0.1)",
             }}
           >
             <PostItem post={post} />
           </Paper>
         ))}
       </List>
-    </Box>
+    </Container>
   );
 };
