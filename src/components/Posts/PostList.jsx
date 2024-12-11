@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { List, Paper, Typography, Box, Container, Button } from "@mui/material";
+import { FaWindowClose } from "react-icons/fa";
 import { MdAddComment } from "react-icons/md";
-
 import { PostItem } from "./PostItem";
 import { PostForm } from "./PostForm";
 
@@ -31,6 +31,7 @@ export const PostList = ({ data }) => {
           sx={{
             fontWeight: "bold",
             fontSize: { xs: "1.5rem", sm: "2rem" },
+            textShadow: "2px 2px 2px rgba(0, 0, 0, 0.4)",
           }}
         >
           Posts List :
@@ -51,8 +52,12 @@ export const PostList = ({ data }) => {
             },
           }}
         >
-          <MdAddComment style={{ fontSize: "1.5rem" }} />
-          Add Post
+          {showForm ? (
+            <FaWindowClose style={{ fontSize: "1.5rem" }} />
+          ) : (
+            <MdAddComment style={{ fontSize: "1.5rem" }} />
+          )}
+          {showForm ? "Cancel" : "AddComment"}
         </Button>
       </Box>
 

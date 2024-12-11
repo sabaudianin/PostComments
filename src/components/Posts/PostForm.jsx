@@ -3,6 +3,7 @@ import { useFormContext } from "react-hook-form";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useAddPost } from "../../hooks/usePosts";
 
 export const PostForm = () => {
   const {
@@ -11,8 +12,11 @@ export const PostForm = () => {
     formState: { errors },
   } = useForm();
 
+  const { mutate: addPost } = useAddPost();
+
   const onSubmit = (data) => {
     console.log(data);
+    addPost({ collectionName: "posts", data });
   };
   return (
     <Container

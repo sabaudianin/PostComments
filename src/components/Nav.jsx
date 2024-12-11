@@ -6,7 +6,7 @@ import {
   TextField,
   Link,
 } from "@mui/material";
-import { FcHome } from "react-icons/fc";
+import { MdLocalPostOffice } from "react-icons/md";
 import { IoHome } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 
@@ -15,7 +15,7 @@ export const Nav = () => {
     <AppBar
       position="static"
       sx={{
-        background: "#00aeff",
+        background: "#006400",
         padding: "0.5rem",
       }}
     >
@@ -32,7 +32,7 @@ export const Nav = () => {
           sx={{
             textDecoration: "none",
 
-            padding: "0.5rem 1rem",
+            padding: ".2rem .6rem",
             fontSize: { xs: "1rem", sm: "1.2rem" },
             borderRadius: "8px",
             background: "#fff",
@@ -45,6 +45,26 @@ export const Nav = () => {
           }}
         >
           <IoHome style={{ fontSize: "1.5rem", color: "#000" }} />
+        </Link>
+        <Link
+          to="/posts"
+          component={NavLink}
+          sx={{
+            textDecoration: "none",
+
+            padding: ".2rem .6rem",
+            fontSize: { xs: "1rem", sm: "1.2rem" },
+            borderRadius: "8px",
+            background: "#fff",
+            color: "white",
+            textAlign: "center",
+            "&:hover": {
+              background: "#d2b48 ",
+              cursor: "pointer",
+            },
+          }}
+        >
+          <MdLocalPostOffice style={{ fontSize: "1.5rem", color: "#000" }} />
         </Link>
 
         <Box
