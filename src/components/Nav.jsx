@@ -6,7 +6,8 @@ import {
   TextField,
   Link,
 } from "@mui/material";
-
+import { FcHome } from "react-icons/fc";
+import { IoHome } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 
 export const Nav = () => {
@@ -14,7 +15,7 @@ export const Nav = () => {
     <AppBar
       position="static"
       sx={{
-        background: "#1e90ff",
+        background: "#00aeff",
         padding: "0.5rem",
       }}
     >
@@ -34,15 +35,16 @@ export const Nav = () => {
             padding: "0.5rem 1rem",
             fontSize: { xs: "1rem", sm: "1.2rem" },
             borderRadius: "8px",
-            background: "#bc8f8f",
+            background: "#fff",
             color: "white",
             textAlign: "center",
             "&:hover": {
               background: "#d2b48 ",
+              cursor: "pointer",
             },
           }}
         >
-          CommentPost
+          <IoHome style={{ fontSize: "1.5rem", color: "#000" }} />
         </Link>
 
         <Box

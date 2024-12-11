@@ -1,11 +1,13 @@
-import { List, Paper, Typography, Box, TextField } from "@mui/material";
+import { List, Paper, Typography, Box, TextField, Button } from "@mui/material";
+import { MdAddComment } from "react-icons/md";
+
 import { PostItem } from "./PostItem";
 
 export const PostList = ({ data }) => {
   return (
     <Box
       sx={{
-        backgroundColor: "#f2f2f2",
+        backgroundColor: "#80e5ff",
         padding: "1rem",
         borderRadius: "8px",
       }}
@@ -16,23 +18,10 @@ export const PostList = ({ data }) => {
           alignItems: "center",
         }}
       >
-        <TextField
-          variant="outlined"
-          size="small"
-          width="100%"
-          placeholder="Add Post.."
-          onChange={(e) => e.target.value}
-          sx={{
-            backgroundColor: "white",
-            borderRadius: "4px",
-            minWidth: { xs: "100%", sm: "300px" },
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: "transparent",
-              },
-            },
-          }}
-        />
+        <Button>
+          <MdAddComment style={{ fontSize: "2rem", color: "red" }} />
+          Add Post
+        </Button>
       </Box>
       <Typography
         variant="h4"
@@ -59,7 +48,7 @@ export const PostList = ({ data }) => {
             sx={{
               padding: "1.5rem",
               borderRadius: "8px",
-              backgroundColor: "white",
+              backgroundColor: "#808080",
             }}
           >
             <PostItem post={post} />
