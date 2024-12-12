@@ -1,5 +1,6 @@
 import { Container, Link, Typography, Box } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { AnimatedLines } from "./AnimatedLines";
 
 export const Home = () => {
   return (
@@ -9,10 +10,9 @@ export const Home = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-around",
         minHeight: "100vh",
         padding: "2rem",
-        background: "#C0C0C0",
       }}
     >
       <Typography
@@ -20,11 +20,28 @@ export const Home = () => {
         sx={{
           marginBottom: "2rem",
           fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
+          fontWeight: "bolder",
           textAlign: "center",
         }}
       >
-        Welcome to the Comment Post
+        Comments from the web
       </Typography>
+
+      <AnimatedLines>
+        <Typography
+          variant="h2"
+          sx={{
+            marginBottom: "2rem",
+            fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
+            fontWeight: "bolder",
+            fontFamily:
+              "Franklin Gothic Medium, Arial Narrow, Arial, sans-serif",
+            textAlign: "center",
+          }}
+        >
+          Welcome to the Comment Post
+        </Typography>
+      </AnimatedLines>
       <Box
         sx={{
           display: "flex",
@@ -33,30 +50,13 @@ export const Home = () => {
         }}
       >
         <Link
-          to="/"
-          component={NavLink}
-          sx={{
-            textDecoration: "none",
-            padding: "0.5rem 1rem",
-            fontSize: { xs: "1rem", sm: "1.2rem" },
-            borderRadius: "8px",
-            backgroundColor: "primary.main",
-            color: "white",
-            textAlign: "center",
-            "&:hover": {
-              backgroundColor: "primary.dark",
-            },
-          }}
-        >
-          HOME
-        </Link>
-        <Link
           to="/posts/"
           component={NavLink}
           sx={{
             textDecoration: "none",
             padding: "0.5rem 1rem",
             fontSize: { xs: "1rem", sm: "1.2rem" },
+
             borderRadius: "8px",
             backgroundColor: "secondary.main",
             color: "white",
@@ -66,38 +66,21 @@ export const Home = () => {
             },
           }}
         >
-          Posts
+          Read Posts
         </Link>
-        <Link
-          to="/comments/"
-          component={NavLink}
+
+        <Typography
+          variant="body1"
           sx={{
-            textDecoration: "none",
-            padding: "0.5rem 1rem",
-            fontSize: { xs: "1rem", sm: "1.2rem" },
-            borderRadius: "8px",
-            backgroundColor: "success.main",
-            color: "white",
+            marginTop: "2rem",
+            fontSize: "1.2rem",
+            color: "text.secondary",
             textAlign: "center",
-            "&:hover": {
-              backgroundColor: "success.dark",
-            },
           }}
         >
-          Comments id 1
-        </Link>
+          Click to explore comments!
+        </Typography>
       </Box>
-      <Typography
-        variant="body1"
-        sx={{
-          marginTop: "2rem",
-          fontSize: "1.2rem",
-          color: "text.secondary",
-          textAlign: "center",
-        }}
-      >
-        Navigate to explore more!
-      </Typography>
     </Container>
   );
 };

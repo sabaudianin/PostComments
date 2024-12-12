@@ -9,13 +9,14 @@ import {
 import { MdLocalPostOffice } from "react-icons/md";
 import { IoHome } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
+import { CustomLink } from "./Elements/Link";
 
 export const Nav = () => {
   return (
     <AppBar
       position="static"
       sx={{
-        background: "#006400",
+        background: "#F8F8FF",
         padding: "0.5rem",
       }}
     >
@@ -26,47 +27,25 @@ export const Nav = () => {
           alignItems: "center",
         }}
       >
-        <Link
-          to="/"
-          component={NavLink}
+        <Box
           sx={{
-            textDecoration: "none",
-
-            padding: ".2rem .6rem",
-            fontSize: { xs: "1rem", sm: "1.2rem" },
-            borderRadius: "8px",
-            background: "#fff",
-            color: "white",
             textAlign: "center",
-            "&:hover": {
-              background: "#d2b48 ",
-              cursor: "pointer",
-            },
+            display: "flex",
+            alignItems: "center",
           }}
         >
-          <IoHome style={{ fontSize: "1.5rem", color: "#000" }} />
-        </Link>
-        <Link
-          to="/posts"
-          component={NavLink}
-          sx={{
-            textDecoration: "none",
-
-            padding: ".2rem .6rem",
-            fontSize: { xs: "1rem", sm: "1.2rem" },
-            borderRadius: "8px",
-            background: "#fff",
-            color: "white",
-            textAlign: "center",
-            "&:hover": {
-              background: "#d2b48 ",
-              cursor: "pointer",
-            },
-          }}
-        >
-          <MdLocalPostOffice style={{ fontSize: "1.5rem", color: "#000" }} />
-        </Link>
-
+          <CustomLink to="/">
+            <IoHome style={{ fontSize: "1.5rem", color: "secondary.main" }} />
+          </CustomLink>
+          <CustomLink to="posts">
+            <MdLocalPostOffice
+              style={{
+                fontSize: "1.5rem",
+                color: "secondary.main",
+              }}
+            />
+          </CustomLink>
+        </Box>
         <Box
           sx={{
             display: "flex",
@@ -82,6 +61,7 @@ export const Nav = () => {
             sx={{
               backgroundColor: "white",
               borderRadius: "4px",
+              boxShadow: "2px 2px 2px gray",
               minWidth: { xs: "100%", sm: "300px" },
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {

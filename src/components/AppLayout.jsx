@@ -4,10 +4,10 @@ import { Nav } from "./Nav";
 
 export const AppLayout = () => {
   return (
-    <Box sx={{ background: "#e6f7ff" }}>
+    <Box sx={{ background: "#F5FFFA" }}>
       <Nav />
 
-      <Box sx={{ marginTop: "2rem", padding: "1rem" }}>
+      <Box sx={{ marginTop: "1rem" }}>
         <Outlet />
       </Box>
     </Box>

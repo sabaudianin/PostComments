@@ -7,7 +7,6 @@ export const CommentsContainer = ({ postId }) => {
   console.log(postId);
 
   const handleAddComment = (data) => {
-    console.log("Comment data to add:", { ...data, postId });
     addPost({ collectionName: "comments", data: { ...data, postId } });
   };
 

@@ -1,0 +1,21 @@
+@keyframes expandLeft {
+  0% {
+    left: 0%;
+    width: 0;
+  }
+  100% {
+    left: 0;
+    width: 100%;
+  }
+}
+
+@keyframes expandRight {
+  0% {
+    left: 100%;
+    width: 0;
+  }
+  100% {
+    left: 0%;
+    width: 100%;
+  }
+}

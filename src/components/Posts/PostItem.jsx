@@ -12,8 +12,10 @@ export const PostItem = ({ post }) => {
         backgroundColor: "#f2f2f2",
         borderRadius: "8px",
         boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+        transition: ".2s",
         "&:hover": {
-          boxShadow: "0 6px 15px rgba(0, 0, 0, 0.15)",
+          backgroundColor: "#e6e6e6",
+          boxShadow: "5px 6px 15px #808080",
         },
       }}
     >

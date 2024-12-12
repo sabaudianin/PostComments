@@ -11,11 +11,8 @@ export const PostList = ({ data }) => {
   return (
     <Container
       sx={{
-        backgroundColor: "#fff",
-        padding: "2rem",
         borderRadius: "8px",
         boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
-        marginTop: "2rem",
       }}
     >
       <Box
@@ -23,21 +20,23 @@ export const PostList = ({ data }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          marginBottom: "1.5rem",
+          marginBottom: ".5rem",
         }}
       >
         <Typography
           variant="h4"
           sx={{
             fontWeight: "bold",
+            color: "text.secondary",
+            fontFamily: "Lucida Sans",
             fontSize: { xs: "1.5rem", sm: "2rem" },
-            textShadow: "2px 2px 2px rgba(0, 0, 0, 0.4)",
+            textShadow: "1px 1px 1px text.secondary",
           }}
         >
-          Posts List :
+          Dive into Content or
         </Typography>
         <Button
-          onClick={() => setShowForm(!showForm)} //
+          onClick={() => setShowForm(!showForm)}
           sx={{
             display: "flex",
             alignItems: "center",
@@ -45,10 +44,10 @@ export const PostList = ({ data }) => {
             padding: "0.75rem 1rem",
             fontWeight: "bold",
             textTransform: "none",
-            backgroundColor: "#1976d2",
+            backgroundColor: "secondary.main",
             color: "white",
             "&:hover": {
-              backgroundColor: "#115293",
+              backgroundColor: "red",
             },
           }}
         >
@@ -57,7 +56,7 @@ export const PostList = ({ data }) => {
           ) : (
             <MdAddComment style={{ fontSize: "1.5rem" }} />
           )}
-          {showForm ? "Cancel" : "AddComment"}
+          {showForm ? "Cancel Post" : "Create Post"}
         </Button>
       </Box>
 
@@ -83,10 +82,10 @@ export const PostList = ({ data }) => {
             key={post.id}
             elevation={3}
             sx={{
-              padding: "1.5rem",
+              padding: ".4rem",
               borderRadius: "8px",
               backgroundColor: "#f5f5f5",
-              boxShadow: "0px 2px 6px rgba(0,0,0,0.1)",
+              boxShadow: "5px 5px 6px #808080",
             }}
           >
             <PostItem post={post} />

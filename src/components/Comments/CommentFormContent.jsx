@@ -1,7 +1,19 @@
-import { Paper, TextField, Button, Box } from "@mui/material";
+import {
+  Paper,
+  TextField,
+  Button,
+  Box,
+  Typography,
+  Collapse,
+} from "@mui/material";
 import { useFormContext } from "react-hook-form";
 
-export const CommentFormContent = ({ onSubmit }) => {
+export const CommentFormContent = ({
+  onSubmit,
+  showInput,
+  openInput,
+  hideInput,
+}) => {
   const {
     register,
     formState: { errors },
@@ -10,23 +22,15 @@ export const CommentFormContent = ({ onSubmit }) => {
   return (
     <Paper
       elevation={3}
-      sx={{ m: 2, p: 2 }}
+      sx={{ m: 1, p: 1 }}
     >
       <Box
         component="form"
         onSubmit={onSubmit}
       >
+        {" "}
         <TextField
-          placeholder="Author"
-          {...register("author", { required: "Author is required" })}
-          error={!!errors.author}
-          helperText={errors.author?.message}
-          fullWidth
-          sx={{ marginBottom: "1rem" }}
-        />
-
-        <TextField
-          placeholder="Description"
+          placeholder="Add Comment"
           {...register("description", {
             required: "Description is required",
           })}
@@ -34,11 +38,41 @@ export const CommentFormContent = ({ onSubmit }) => {
           helperText={errors.description?.message}
           fullWidth
           multiline
-          rows={4}
+          rows={2}
           sx={{ marginBottom: "1rem" }}
+          onFocus={openInput}
         />
-
-        <Button type="submit">Submit</Button>
+        {showInput && (
+          <Collapse
+            in={showInput}
+            timeout={{ enter: 900, exit: 600 }}
+            sx={{
+              transition: "transform 0.5s ease, opacity 0.5s ease",
+            }}
+          >
+            <TextField
+              placeholder="Author"
+              {...register("author", { required: "Author is required" })}
+              error={!!errors.author}
+              helperText={errors.author?.message}
+              fullWidth
+              sx={{ marginBottom: "1rem" }}
+            />
+            <Button
+              type="submit"
+              sx={{ color: "green" }}
+            >
+              Submit
+            </Button>
+            <Button
+              type="button"
+              onClick={hideInput}
+              sx={{ color: "red" }}
+            >
+              Cancel
+            </Button>
+          </Collapse>
+        )}
       </Box>
     </Paper>
   );

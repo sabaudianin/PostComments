@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./components/Home";
-import { Comments } from "./components/Comments/Comments";
 import { PostsWrapper } from "./components/Posts/PostsWrapper";
 import { PostDetails } from "./components/Posts/PostDetails";
-import { Nav } from "./components/Nav";
 import { AppLayout } from "./components/AppLayout";
+import "./App.css";
 
 export const App = () => {
   return (

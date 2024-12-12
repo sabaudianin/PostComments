@@ -3,3 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  background-color: #f5fffa;
+  height: 100%;
+  font-family: monospace;
+}

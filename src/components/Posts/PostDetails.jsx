@@ -19,7 +19,7 @@ export const PostDetails = () => {
     <Container>
       <Box
         sx={{
-          background: "linear-gradient(90deg, #4caf50, #ff4500)",
+          background: "linear-gradient(90deg, #d6ff99, #ff6666)",
           padding: ".25rem",
           borderRadius: "8px",
         }}
