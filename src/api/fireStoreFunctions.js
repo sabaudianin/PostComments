@@ -14,6 +14,8 @@ import { db } from "../firebaseConfig";
 //Fn dodawania dokumentu
 export const addDocument = async (collectionName, data) => {
   try {
+    console.log("Adding document to collection:", collectionName);
+    console.log("Data:", data);
     const docRef = await addDoc(collection(db, collectionName), data);
     return docRef;
   } catch (error) {

@@ -1,10 +1,9 @@
 import { Paper, TextField, Button, Box } from "@mui/material";
 import { useFormContext } from "react-hook-form";
 
-export const CommentFormContent = ({ handleAddComment }) => {
+export const CommentFormContent = ({ onSubmit }) => {
   const {
     register,
-    handleSubmit,
     formState: { errors },
   } = useFormContext();
 
@@ -15,13 +14,15 @@ export const CommentFormContent = ({ handleAddComment }) => {
     >
       <Box
         component="form"
-        onSubmit={handleSubmit(handleAddComment)}
+        onSubmit={onSubmit}
       >
         <TextField
           placeholder="Author"
           {...register("author", { required: "Author is required" })}
           error={!!errors.author}
           helperText={errors.author?.message}
+          fullWidth
+          sx={{ marginBottom: "1rem" }}
         />
 
         <TextField
@@ -31,6 +32,10 @@ export const CommentFormContent = ({ handleAddComment }) => {
           })}
           error={!!errors.description}
           helperText={errors.description?.message}
+          fullWidth
+          multiline
+          rows={4}
+          sx={{ marginBottom: "1rem" }}
         />
 
         <Button type="submit">Submit</Button>

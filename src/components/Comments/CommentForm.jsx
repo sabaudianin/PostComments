@@ -7,9 +7,14 @@ import { CommentFormContent } from "./CommentFormContent";
 export const CommentForm = ({ handleAddComment }) => {
   const formMethods = useForm({ resolver: zodResolver(commentsSchema) });
 
+  const onSubmit = (data) => {
+    handleAddComment(data);
+    formMethods.reset();
+  };
+
   return (
     <FormProvider {...formMethods}>
-      <CommentFormContent handleAddComment={handleAddComment} />
+      <CommentFormContent onSubmit={formMethods.handleSubmit(onSubmit)} />
     </FormProvider>
   );
 };

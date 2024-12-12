@@ -7,6 +7,7 @@ import { CommentsContainer } from "../Comments/CommentsContainer";
 export const PostDetails = () => {
   const { id } = useParams();
   const { data: post, isLoading, isError, error } = useGetPostById(id, "posts");
+  console.log(id);
 
   if (isLoading) return <p>Loading post details...</p>;
   if (isError) return <p>Error: {error.message}</p>;
@@ -114,7 +115,7 @@ export const PostDetails = () => {
         </Paper>
       </Box>
 
-      <CommentsContainer />
+      <CommentsContainer postId={id} />
     </Container>
   );
 };
