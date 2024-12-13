@@ -1,8 +1,7 @@
 import { Comments } from "./Comments";
 import { useGetPosts, useAddPost } from "../../hooks/usePosts";
-import { Snackbar, Alert } from "@mui/material";
+import { StyledSnackbar } from "../Elements/Snackbar";
 import { useState } from "react";
-import { Slide } from "@mui/material";
 
 export const CommentsContainer = ({ postId }) => {
   const { data, isLoading, isError, error } = useGetPosts("comments");
@@ -41,12 +40,6 @@ export const CommentsContainer = ({ postId }) => {
     setSnackbar({ ...snackbar, open: false });
   };
 
-  const slide = (props) => (
-    <Slide
-      {...props}
-      direction="right"
-    />
-  );
   const filterdComments = data?.filter((comment) => comment.postId === postId);
 
   return (
@@ -58,27 +51,10 @@ export const CommentsContainer = ({ postId }) => {
         error={error}
         handleAddComment={handleAddComment}
       />
-      <Snackbar
-        open={snackbar.open}
-        autoHideDuration={5000}
-        onClose={closeSnackbar}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        TransitionComponent={slide}
-      >
-        <Alert
-          onClose={closeSnackbar}
-          severity={snackbar.severity}
-          sx={{
-            width: "100%",
-            padding: "1rem",
-            boxShadow: "0px 4px 10px rgba(0,0,0,0.2)",
-            background: "#00FF00",
-            fontWeight: "bold",
-          }}
-        >
-          {snackbar.message}
-        </Alert>
-      </Snackbar>
+      <StyledSnackbar
+        closeSnackbar={closeSnackbar}
+        snackbar={snackbar}
+      />
     </>
   );
 };

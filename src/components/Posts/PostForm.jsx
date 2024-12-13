@@ -1,20 +1,57 @@
 import { TextField, Button, Box, Container } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useAddPost } from "../../hooks/usePosts";
+import { postSchema } from "../../hooks/validationSchema";
+import { StyledSnackbar } from "../Elements/Snackbar";
 
-export const PostForm = () => {
+export const PostForm = ({ setShowForm }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    reset,
+  } = useForm({ resolver: zodResolver(postSchema) });
 
   const { mutate: addPost } = useAddPost();
 
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
+
+  const closeSnackbar = () => {
+    setSnackbar({ ...snackbar, open: false });
+  };
+
   const onSubmit = (data) => {
     console.log(data);
-    addPost({ collectionName: "posts", data });
+    addPost(
+      { collectionName: "posts", data },
+      {
+        onSuccess: () => {
+          setSnackbar({
+            open: true,
+            message: "Post Added Sucessfully",
+            severity: "success",
+          });
+        },
+        onError: () => {
+          setSnackbar({
+            open: "false",
+            message: "Error during added post",
+            severity: "error",
+          });
+          console.log("error adding post", error);
+        },
+      }
+    );
+    reset();
+    setShowForm(false);
   };
+
   return (
     <Container
       sx={{
@@ -68,11 +105,16 @@ export const PostForm = () => {
             fontSize: "1rem",
             fontWeight: "bold",
             textTransform: "none",
+            backgroundColor: "secondary.main",
           }}
         >
           Send Post
         </Button>
       </Box>
+      <StyledSnackbar
+        snackbar={snackbar}
+        closeSnackbar={closeSnackbar}
+      />
     </Container>
   );
 };
