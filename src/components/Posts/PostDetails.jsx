@@ -3,6 +3,7 @@ import { Typography, Paper, Box, Container, Button } from "@mui/material";
 import { BiSolidUpvote, BiSolidDownvote } from "react-icons/bi";
 import { useGetPostById } from "../../hooks/usePosts";
 import { CommentsContainer } from "../Comments/CommentsContainer";
+import { FcLike } from "react-icons/fc";
 
 export const PostDetails = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ export const PostDetails = () => {
   console.log("Posts", post);
 
   return (
-    <Container>
+    <Container sx={{ paddingTop: 4 }}>
       <Box
         sx={{
           background: "linear-gradient(90deg, #d6ff99, #ff6666)",

@@ -1,11 +1,4 @@
-import {
-  Paper,
-  TextField,
-  Button,
-  Box,
-  Typography,
-  Collapse,
-} from "@mui/material";
+import { TextField, Button, Box, Collapse } from "@mui/material";
 import { useFormContext } from "react-hook-form";
 
 export const CommentFormContent = ({
@@ -20,9 +13,11 @@ export const CommentFormContent = ({
   } = useFormContext();
 
   return (
-    <Paper
-      elevation={3}
-      sx={{ m: 1, p: 1 }}
+    <Box
+      sx={{
+        marginTop: 1,
+        marginBottom: 1,
+      }}
     >
       <Box
         component="form"
@@ -74,6 +69,6 @@ export const CommentFormContent = ({
           </Collapse>
         )}
       </Box>
-    </Paper>
+    </Box>
   );
 };

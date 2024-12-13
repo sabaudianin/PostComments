@@ -7,10 +7,6 @@ import { CommentFormContent } from "./CommentFormContent";
 export const CommentForm = ({ handleAddComment }) => {
   const formMethods = useForm({ resolver: zodResolver(commentsSchema) });
 
-  const onSubmit = (data) => {
-    handleAddComment(data);
-    formMethods.reset();
-  };
   const [showInput, setShowInput] = useState(false);
 
   const openInput = useCallback(() => {
@@ -18,8 +14,15 @@ export const CommentForm = ({ handleAddComment }) => {
   }, []);
 
   const hideInput = useCallback(() => {
+    formMethods.reset();
     setShowInput(false);
   }, []);
+
+  const onSubmit = (data) => {
+    handleAddComment(data);
+
+    hideInput();
+  };
 
   return (
     <FormProvider {...formMethods}>
