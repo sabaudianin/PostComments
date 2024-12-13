@@ -25,7 +25,10 @@ export const Comments = ({
       >
         <Typography
           variant="h5"
-          sx={{ textAlign: "center" }}
+          sx={{
+            textAlign: "center",
+            textShadow: "1px 1px 3px rgba(0,0,0,0.2)",
+          }}
         >
           Community Thoughts
         </Typography>

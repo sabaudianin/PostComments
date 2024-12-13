@@ -13,6 +13,10 @@ export const Home = () => {
         justifyContent: "space-around",
         minHeight: "100vh",
         padding: "2rem",
+        backgroundImage: 'url("/notes.jpg")',
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "30%",
+        backgroundPosition: "top",
       }}
     >
       <Typography
@@ -22,9 +26,10 @@ export const Home = () => {
           fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
           fontWeight: "bolder",
           textAlign: "center",
+          alignSelf: "top",
         }}
       >
-        Comments from the web
+        {/* Comments from the web */}
       </Typography>
 
       <AnimatedLines>
@@ -45,8 +50,11 @@ export const Home = () => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", sm: "row" },
+          flexDirection: "column",
           gap: "1rem",
+          justifyContent: "center",
+          alignItems: "center",
+          flexWrap: "nowrap",
         }}
       >
         <Link
@@ -61,6 +69,7 @@ export const Home = () => {
             backgroundColor: "secondary.main",
             color: "white",
             textAlign: "center",
+
             "&:hover": {
               backgroundColor: "secondary.dark",
             },

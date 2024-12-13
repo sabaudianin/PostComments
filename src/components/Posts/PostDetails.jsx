@@ -17,19 +17,24 @@ export const PostDetails = () => {
   console.log("Posts", post);
 
   return (
-    <Container sx={{ paddingTop: 4 }}>
+    <Container
+      sx={{
+        paddingTop: 4,
+      }}
+    >
       <Box
         sx={{
           background: "linear-gradient(90deg, #d6ff99, #ff6666)",
           padding: ".25rem",
-          borderRadius: "8px",
+          borderRadius: "4px",
+          boxShadow: "2px 2px 2px black",
         }}
       >
         <Paper
           elevation={3}
           sx={{
-            padding: "1rem",
-            borderRadius: "8px",
+            padding: "2rem",
+            borderRadius: "4px",
             backgroundColor: "#f2f2f2",
             boxShadow: "0px 4px 6px rgba(0,0,0,0.1)",
           }}

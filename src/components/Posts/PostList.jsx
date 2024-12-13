@@ -2,6 +2,7 @@ import { useState } from "react";
 import { List, Paper, Typography, Box, Container, Button } from "@mui/material";
 import { FaWindowClose } from "react-icons/fa";
 import { MdAddComment } from "react-icons/md";
+
 import { PostItem } from "./PostItem";
 import { PostForm } from "./PostForm";
 
@@ -31,7 +32,7 @@ export const PostList = ({ data }) => {
             fontWeight: "bold",
             color: "text.secondary",
             fontFamily: "Lucida Sans",
-            fontSize: { xs: "1.5rem", sm: "2rem" },
+            fontSize: { xs: "1.2rem", sm: "2rem" },
             textShadow: "1px 1px 1px text.secondary",
           }}
         >
@@ -68,7 +69,7 @@ export const PostList = ({ data }) => {
             marginBottom: "2rem",
           }}
         >
-          <PostForm />
+          <PostForm setShowForm={setShowForm} />
         </Box>
       )}
 

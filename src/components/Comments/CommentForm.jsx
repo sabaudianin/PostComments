@@ -20,7 +20,6 @@ export const CommentForm = ({ handleAddComment }) => {
 
   const onSubmit = (data) => {
     handleAddComment(data);
-
     hideInput();
   };
 
