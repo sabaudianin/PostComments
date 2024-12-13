@@ -11,8 +11,10 @@ export const PostList = ({ data }) => {
   return (
     <Container
       sx={{
-        borderRadius: "8px",
-        boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+        boxShadow: "0px 4px 10px black",
+        padding: 2,
+        background: "#FFFAF0",
+        paddingTop: 4,
       }}
     >
       <Box
@@ -33,7 +35,7 @@ export const PostList = ({ data }) => {
             textShadow: "1px 1px 1px text.secondary",
           }}
         >
-          Dive into Content or
+          Dive into Content
         </Typography>
         <Button
           onClick={() => setShowForm(!showForm)}

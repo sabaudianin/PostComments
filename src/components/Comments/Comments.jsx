@@ -1,4 +1,4 @@
-import { Paper, Typography } from "@mui/material";
+import { Paper, Typography, Container, Box } from "@mui/material";
 import { CommentsList } from "./CommentsList";
 import { CommentForm } from "./CommentForm";
 
@@ -15,17 +15,26 @@ export const Comments = ({
   return (
     <>
       <CommentForm handleAddComment={handleAddComment} />
-      <Paper
-        elevation={3}
-        sx={{ m: 2, p: 2 }}
+      <Box
+        sx={{
+          p: 4,
+          background: "#b6c0c8",
+          borderRadius: 4,
+          boxShadow: "4px 4px 2px #000",
+        }}
       >
-        <Typography variant="h5">Comments</Typography>
-        {Array.isArray(data) && data.length === 0 ? (
+        <Typography
+          variant="h5"
+          sx={{ textAlign: "center" }}
+        >
+          Community Thoughts
+        </Typography>
+        {data.length === 0 ? (
           <p>There are no comments yet</p>
         ) : (
           <CommentsList data={data} />
         )}
-      </Paper>
+      </Box>
     </>
   );
 };
