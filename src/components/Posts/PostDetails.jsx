@@ -1,14 +1,33 @@
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { Typography, Paper, Box, Container, Button } from "@mui/material";
 import { BiSolidUpvote, BiSolidDownvote } from "react-icons/bi";
 import { useGetPostById } from "../../hooks/usePosts";
 import { CommentsContainer } from "../Comments/CommentsContainer";
-import { FcLike } from "react-icons/fc";
+import { PostActions } from "./PostActions";
+import { StyledSnackbar } from "../Elements/Snackbar";
 
 export const PostDetails = () => {
   const { id } = useParams();
   const { data: post, isLoading, isError, error } = useGetPostById(id, "posts");
   console.log(id);
+
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
+
+  const closeSnackbar = () => setSnackbar({ ...snackbar, open: false });
+
+  const handleSuccess = (message) => {
+    setSnackbar({ open: true, message, severity: "success" });
+    setTimeout(() => navigate("/posts"), 3000); // Redirect after showing success
+  };
+
+  const handleError = (message) => {
+    setSnackbar({ open: true, message, severity: "error" });
+  };
 
   if (isLoading) return <p>Loading post details...</p>;
   if (isError) return <p>Error: {error.message}</p>;
@@ -20,6 +39,7 @@ export const PostDetails = () => {
     <Container
       sx={{
         paddingTop: 4,
+        // background: "#000",
       }}
     >
       <Box
@@ -118,10 +138,21 @@ export const PostDetails = () => {
               <BiSolidDownvote style={{ fontSize: "1.2rem" }} />
             </Button>
           </Box>
+          <Box sx={{ marginTop: "1rem" }}>
+            <PostActions
+              postId={id}
+              onSuccess={handleSuccess}
+              onError={handleError}
+            />
+          </Box>
         </Paper>
       </Box>
 
       <CommentsContainer postId={id} />
+      <StyledSnackbar
+        closeSnackbar={closeSnackbar}
+        snackbar={snackbar}
+      />
     </Container>
   );
 };
