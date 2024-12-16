@@ -17,9 +17,10 @@ export const Comments = ({
       <CommentForm handleAddComment={handleAddComment} />
       <Box
         sx={{
-          p: 4,
-          background: "#b6c0c8",
-          borderRadius: 4,
+          p: 1,
+          background: "#b3b3b3",
+          border: "2px  solid #ccc",
+          borderRadius: 2,
           boxShadow: "4px 4px 2px #000",
         }}
       >

@@ -22,6 +22,11 @@ export const CommentFormContent = ({
       <Box
         component="form"
         onSubmit={onSubmit}
+        sx={{
+          background: "#f2f2f2",
+          borderRadius: 2,
+          border: "2px  solid #bfbfbf",
+        }}
       >
         {" "}
         <TextField
@@ -34,7 +39,6 @@ export const CommentFormContent = ({
           fullWidth
           multiline
           rows={2}
-          sx={{ marginBottom: "1rem" }}
           onFocus={openInput}
         />
         {showInput && (
