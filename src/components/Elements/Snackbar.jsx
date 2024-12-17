@@ -11,7 +11,7 @@ export const StyledSnackbar = ({ snackbar, closeSnackbar }) => {
   return (
     <Snackbar
       open={snackbar.open}
-      autoHideDuration={5000}
+      autoHideDuration={3000}
       onClose={closeSnackbar}
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
       TransitionComponent={slide}

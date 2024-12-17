@@ -1,19 +1,13 @@
 import { Button, Box, Container } from "@mui/material";
-import { useState } from "react";
-import { useDeletePost, useUpdatePost } from "../../hooks/usePosts";
-import { useNavigate } from "react-router-dom";
 
-export const PostActions = ({ postId, onSuccess, onError }) => {
+import { useDeletePost, useUpdatePost } from "../../hooks/usePosts";
+import { useSnackbar } from "../../context/SnackbarContext";
+import { StyledSnackbar } from "../Elements/Snackbar";
+
+export const PostActions = ({ postId }) => {
   const { mutate: deletePost } = useDeletePost();
   const { mutate: updatePost } = useUpdatePost();
-  const navigate = useNavigate();
-
-  const [snackbar, setSnackbar] = useState({
-    open: false,
-    message: "",
-    severity: "success",
-  });
-  const closeSnackbar = () => setSnackbar({ ...snackbar, open: false });
+  const { showSnackbar } = useSnackbar();
 
   const deleteThisPost = (postId) => {
     if (!postId) {
@@ -23,29 +17,21 @@ export const PostActions = ({ postId, onSuccess, onError }) => {
       { collectionName: "posts", postId },
       {
         onSuccess: () => {
-          setSnackbar({
-            open: true,
-            message: "Post Deleted,returning to Posts",
-            severity: "success",
-          });
-          setTimeout(() => navigate("/posts"), 3000);
+          showSnackbar("Post deleted successfully!", "success");
         },
         onError: (error) => {
-          console.log("error deleting Post", error);
-          setSnackbar({
-            open: true,
-            message: "Failed to delete Post. Please Try again",
-            severity: "error",
-          });
+          console.error("Error deleting post:", error);
+          showSnackbar("Failed to delete post. Please try again.", "error");
         },
       }
     );
   };
+
   console.log(postId);
   return (
     <Box sx={{ display: "flex", gap: "1rem" }}>
       <Button
-        onClick={deleteThisPost}
+        onClick={() => deleteThisPost(postId)}
         sx={{
           backgroundColor: "#f44336",
           color: "#fff",
