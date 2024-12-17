@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 import { useState } from "react";
-import { useDeletePost, useUpdatePost } from "../../hooks/usePosts";
+import { useDeletePost } from "../../hooks/usePosts";
 import { useSnackbar } from "../../context/SnackbarContext";
 
 export const DeletePost = ({ postId }) => {
@@ -42,9 +42,16 @@ export const DeletePost = ({ postId }) => {
     <>
       <Button
         variant="contained"
-        color="error"
+        color="red"
         onClick={handleOpen}
-        sx={{ fontWeight: "bold" }}
+        sx={{
+          fontWeight: "bold",
+          color: "red",
+          "&:hover": {
+            boxShadow: "5px 5px 16px #808080 ",
+            backgroundColor: "#ffe6e6",
+          },
+        }}
       >
         Delete Post
       </Button>

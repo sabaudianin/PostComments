@@ -18,6 +18,7 @@ export const Nav = () => {
       sx={{
         background: "#F8F8FF",
         padding: "0.5rem",
+        boxShadow: "4px 4px 10px black",
       }}
     >
       <Toolbar

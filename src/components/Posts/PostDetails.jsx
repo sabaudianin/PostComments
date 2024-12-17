@@ -21,6 +21,9 @@ export const PostDetails = () => {
     <Container
       sx={{
         paddingTop: 4,
+        background: "#ebf0f7",
+        height: "100vh",
+        boxShadow: "0px 4px 10px black",
       }}
     >
       <Box
