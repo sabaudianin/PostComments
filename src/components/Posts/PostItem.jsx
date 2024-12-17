@@ -8,6 +8,7 @@ export const PostItem = ({ post }) => {
   return (
     <ListItem
       sx={{
+        width: "100%",
         borderBottom: "2px solid #eee",
         padding: ".5rem",
         backgroundColor: "#f2f2f2",
@@ -16,7 +17,7 @@ export const PostItem = ({ post }) => {
         transition: ".2s",
         "&:hover": {
           backgroundColor: "#e6e6e6",
-          boxShadow: "5px 6px 15px #808080",
+          boxShadow: "5px 6px 15px #000",
         },
       }}
     >
@@ -68,12 +69,13 @@ export const PostItem = ({ post }) => {
           to={`/posts/${id}`}
           variant="contained"
           sx={{
+            width: "100%",
             mb: 1,
             backgroundColor: "#F8F8F8",
-            color: "red",
+            color: "#101010",
             fontWeight: "bold",
             "&:hover": {
-              backgroundColor: "red",
+              backgroundColor: "#606060",
               color: "white",
             },
           }}

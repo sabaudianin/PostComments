@@ -14,8 +14,9 @@ export const PostList = ({ data }) => {
       sx={{
         boxShadow: "0px 4px 10px black",
         padding: 2,
-        background: "#FFFAF0",
         paddingTop: 4,
+        background: " #ebf0f7",
+        height: "100%",
       }}
     >
       <Box
@@ -23,41 +24,52 @@ export const PostList = ({ data }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          marginBottom: ".5rem",
+          // marginBottom: ".5rem",
+          flexWrap: "wrap",
         }}
       >
         <Typography
           variant="h4"
           sx={{
             fontWeight: "bold",
+            textAlign: "center",
             color: "text.secondary",
             fontFamily: "Lucida Sans",
             fontSize: { xs: "1.2rem", sm: "2rem" },
             textShadow: "1px 1px 1px text.secondary",
+            mb: 2,
+            width: "100%",
           }}
         >
-          Dive into Content
+          Dive into content or create it !
         </Typography>
         <Button
           onClick={() => setShowForm(!showForm)}
           sx={{
             display: "flex",
+            width: "100%",
             alignItems: "center",
-            gap: "0.5rem",
+            gap: "1rem",
             padding: "0.75rem 1rem",
             fontWeight: "bold",
             textTransform: "none",
-            backgroundColor: "secondary.main",
-            color: "white",
+            backgroundColor: "#F8F8F8",
+            boxShadow: "5px 5px 6px #808080",
+            color: "#000",
+            mb: 1,
+
             "&:hover": {
-              backgroundColor: "red",
+              boxShadow: "5px 5px 16px #808080 ",
+              backgroundColor: "#E0E0E0",
             },
           }}
         >
           {showForm ? (
-            <FaWindowClose style={{ fontSize: "1.5rem" }} />
+            <FaWindowClose style={{ fontSize: "1.5rem", color: "red" }} />
           ) : (
-            <MdAddComment style={{ fontSize: "1.5rem" }} />
+            <MdAddComment
+              style={{ fontSize: "1.5rem", color: "secondary.main" }}
+            />
           )}
           {showForm ? "Cancel Post" : "Create Post"}
         </Button>
