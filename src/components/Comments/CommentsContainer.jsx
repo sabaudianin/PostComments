@@ -1,43 +1,27 @@
+import { useState } from "react";
 import { Comments } from "./Comments";
 import { useGetPosts, useAddPost } from "../../hooks/usePosts";
-import { StyledSnackbar } from "../Elements/Snackbar";
-import { useState } from "react";
+
+import { useSnackbar } from "../../context/SnackbarContext";
 
 export const CommentsContainer = ({ postId }) => {
   const { data, isLoading, isError, error } = useGetPosts("comments");
   const { mutate: addPost } = useAddPost();
-  const [snackbar, setSnackbar] = useState({
-    open: false,
-    message: "",
-    severity: "success",
-  });
-  console.log(postId);
+  const { showSnackbar } = useSnackbar();
 
   const handleAddComment = (data) => {
     addPost(
       { collectionName: "comments", data: { ...data, postId } },
       {
         onSuccess: () => {
-          setSnackbar({
-            open: true,
-            message: "Comment added succesfully",
-            severity: "success",
-          });
+          showSnackbar("Comment added successfully!", "success");
         },
-        onErrror: () => {
-          setSnackbar({
-            open: false,
-            message: "Failed to add Comment",
-            severity: "error",
-          });
-          console.log("error adding comment", error);
+        onError: (error) => {
+          console.error("Error adding comment:", error);
+          showSnackbar("Failed to add commeny. Please try again.", "error");
         },
       }
     );
-  };
-
-  const closeSnackbar = () => {
-    setSnackbar({ ...snackbar, open: false });
   };
 
   const filterdComments = data?.filter((comment) => comment.postId === postId);
@@ -50,10 +34,6 @@ export const CommentsContainer = ({ postId }) => {
         isError={isError}
         error={error}
         handleAddComment={handleAddComment}
-      />
-      <StyledSnackbar
-        closeSnackbar={closeSnackbar}
-        snackbar={snackbar}
       />
     </>
   );

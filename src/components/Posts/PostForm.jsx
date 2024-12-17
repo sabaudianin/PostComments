@@ -1,10 +1,11 @@
+import { useEffect, useRef } from "react";
 import { TextField, Button, Box, Container } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { useSnackbar } from "../../context/SnackbarContext";
 import { useAddPost } from "../../hooks/usePosts";
 import { postSchema } from "../../hooks/validationSchema";
-import { StyledSnackbar } from "../Elements/Snackbar";
 
 export const PostForm = ({ setShowForm }) => {
   const {
@@ -15,16 +16,8 @@ export const PostForm = ({ setShowForm }) => {
   } = useForm({ resolver: zodResolver(postSchema) });
 
   const { mutate: addPost } = useAddPost();
-
-  const [snackbar, setSnackbar] = useState({
-    open: false,
-    message: "",
-    severity: "success",
-  });
-
-  const closeSnackbar = () => {
-    setSnackbar({ ...snackbar, open: false });
-  };
+  const timeoutRef = useRef(null);
+  const { showSnackbar } = useSnackbar();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -32,25 +25,27 @@ export const PostForm = ({ setShowForm }) => {
       { collectionName: "posts", data },
       {
         onSuccess: () => {
-          setSnackbar({
-            open: true,
-            message: "Post Added Sucessfully",
-            severity: "success",
-          });
+          console.log("Snackbar success trigger");
+          showSnackbar("Post added successfully!", "success");
+          timeoutRef.current = setTimeout(() => setShowForm(false), 100);
         },
-        onError: () => {
-          setSnackbar({
-            open: "false",
-            message: "Error during added post",
-            severity: "error",
-          });
-          console.log("error adding post", error);
+        onError: (error) => {
+          console.error("Error adding post:", error);
+          showSnackbar("Failed to add post. Please try again.", "error");
         },
       }
     );
     reset();
-    setShowForm(false);
   };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        console.log("timeout cleared");
+      }
+    };
+  }, []);
 
   return (
     <Container
@@ -111,10 +106,6 @@ export const PostForm = ({ setShowForm }) => {
           Send Post
         </Button>
       </Box>
-      <StyledSnackbar
-        snackbar={snackbar}
-        closeSnackbar={closeSnackbar}
-      />
     </Container>
   );
 };

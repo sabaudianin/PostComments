@@ -1,6 +1,6 @@
 import { ListItem, ListItemText, Button, Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { PostActions } from "./PostActions";
+import { DeletePost } from "./DeletePost";
 
 export const PostItem = ({ post }) => {
   const { id, title, content, author } = post;
@@ -9,7 +9,7 @@ export const PostItem = ({ post }) => {
     <ListItem
       sx={{
         borderBottom: "2px solid #eee",
-        padding: "2rem",
+        padding: ".5rem",
         backgroundColor: "#f2f2f2",
         borderRadius: "8px",
         boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
@@ -45,6 +45,9 @@ export const PostItem = ({ post }) => {
           sx={{
             fontSize: "0.9rem",
             color: "text.secondary",
+            wordBreak: "break-word",
+            overflowWrap: "break-word",
+            whiteSpace: "normal",
           }}
         >
           {content.substring(0, 100)}...
@@ -65,9 +68,8 @@ export const PostItem = ({ post }) => {
           to={`/posts/${id}`}
           variant="contained"
           sx={{
-            marginTop: "1rem",
-            alignSelf: "flex-start",
-            backgroundColor: "white",
+            mb: 1,
+            backgroundColor: "#F8F8F8",
             color: "red",
             fontWeight: "bold",
             "&:hover": {
@@ -78,7 +80,7 @@ export const PostItem = ({ post }) => {
         >
           Read More
         </Button>
-        <PostActions postId={id} />
+        <DeletePost postId={id} />
       </Box>
     </ListItem>
   );
