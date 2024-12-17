@@ -1,5 +1,6 @@
 import { ListItem, ListItemText, Button, Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { PostActions } from "./PostActions";
 
 export const PostItem = ({ post }) => {
   const { id, title, content, author } = post;
@@ -77,6 +78,7 @@ export const PostItem = ({ post }) => {
         >
           Read More
         </Button>
+        <PostActions postId={id} />
       </Box>
     </ListItem>
   );
