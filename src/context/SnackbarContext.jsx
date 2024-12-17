@@ -20,7 +20,7 @@ export const SnackbarProvider = ({ children }) => {
       {children}
       <Snackbar
         open={snackbar.open}
-        autoHideDuration={5000}
+        autoHideDuration={3000}
         onClose={closeSnackbar}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         TransitionComponent={(props) => (
@@ -37,8 +37,11 @@ export const SnackbarProvider = ({ children }) => {
             width: "100%",
             padding: "1rem",
             boxShadow: "0px 4px 10px rgba(0,0,0,0.2)",
-            background: "#00FF00",
+            background: snackbar.severity === "success" ? "#00FF00" : "#FF4D4D",
             fontWeight: "bold",
+            opacity: "99%",
+            color: "#fff",
+            fontSize: "1rem",
           }}
         >
           {snackbar.message}

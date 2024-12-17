@@ -60,6 +60,9 @@ export const PostDetails = () => {
               marginBottom: "1rem",
               lineHeight: 1.6,
               color: "#555",
+              wordBreak: "break-word",
+              overflowWrap: "break-word",
+              whiteSpace: "normal",
             }}
           >
             {post.content}
