@@ -50,11 +50,11 @@ export const PostForm = ({ setShowForm }) => {
   return (
     <Container
       sx={{
-        marginTop: "2rem",
-        padding: "2rem",
+        marginTop: ".5rem",
+        padding: "1rem",
         backgroundColor: "#f5f5f5",
         borderRadius: "8px",
-        boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+        boxShadow: "4px 4px 10px rgba(0,0,0,0.1)",
       }}
     >
       <Box
@@ -63,7 +63,6 @@ export const PostForm = ({ setShowForm }) => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          gap: "1rem",
         }}
       >
         <TextField

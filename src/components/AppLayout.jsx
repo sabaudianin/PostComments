@@ -4,9 +4,17 @@ import { Nav } from "./Nav";
 
 export const AppLayout = () => {
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexWrap: "wrap",
+        backgroundImage: 'url("/bg.jpg")',
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
       <Nav />
-
       <Box>
         <Outlet />
       </Box>

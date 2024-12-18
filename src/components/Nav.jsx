@@ -8,6 +8,8 @@ import {
 } from "@mui/material";
 import { MdLocalPostOffice } from "react-icons/md";
 import { IoHome } from "react-icons/io5";
+import { FaCommentAlt } from "react-icons/fa";
+import { BsPostcardFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import { CustomLink } from "./Elements/Link";
 
@@ -16,61 +18,54 @@ export const Nav = () => {
     <AppBar
       position="static"
       sx={{
-        background: "#F8F8FF",
+        background: "linear-gradient(135deg, #D3D3D3, #A9A9A9, #696969)",
         padding: "0.5rem",
-        boxShadow: "4px 4px 10px black",
+        boxShadow: "4px 4px 10px black ",
       }}
     >
       <Toolbar
         sx={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: { xs: "space-between", lg: "space-evenly" },
           alignItems: "center",
         }}
       >
         <Box
           sx={{
-            textAlign: "center",
             display: "flex",
+            justifyContent: "space-between",
             alignItems: "center",
+            borderRadius: "4px",
           }}
         >
           <CustomLink to="/">
-            <IoHome style={{ fontSize: "1.5rem", color: "secondary.main" }} />
+            <IoHome
+              style={{
+                fontSize: "2rem",
+                color: "#000",
+              }}
+            />
           </CustomLink>
           <CustomLink to="posts">
-            <MdLocalPostOffice
+            <BsPostcardFill
               style={{
-                fontSize: "1.5rem",
-                color: "secondary.main",
+                fontSize: "2rem",
+                color: "#000",
               }}
             />
           </CustomLink>
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            width: { xs: "50%", sm: "auto" },
-          }}
-        >
-          <TextField
-            variant="outlined"
-            size="small"
-            placeholder="Search posts..."
-            onChange={(e) => e.target.value}
+        <Box>
+          <Typography
             sx={{
-              backgroundColor: "white",
-              borderRadius: "4px",
-              boxShadow: "2px 2px 2px gray",
-              minWidth: { xs: "100%", sm: "300px" },
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderColor: "transparent",
-                },
-              },
+              fontFamily: "fantasy",
+              color: "#000",
+              fontWeight: "bold",
+              fontSize: "1.6rem",
             }}
-          />
+          >
+            COMMENT POST
+          </Typography>
         </Box>
       </Toolbar>
     </AppBar>

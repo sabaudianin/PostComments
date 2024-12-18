@@ -1,20 +1,11 @@
-import { PostList } from "./PostList";
+import { PostFilter } from "./PostFilter";
 import { useGetPosts } from "../../hooks/usePosts";
 
 export const PostsWrapper = () => {
   const { data, isLoading, isError, error } = useGetPosts("posts");
 
-  const handleAddPost = (data) => {
-    addPost({ collectionName: "posts", data });
-  };
+  if (isLoading) return <p>Loading posts...</p>;
+  if (isError) return <p>Error: {error.message}</p>;
 
-  return (
-    <PostList
-      data={data}
-      isLoading={isLoading}
-      isError={isError}
-      error={error}
-      handleAddPost={handleAddPost}
-    />
-  );
+  return <PostFilter data={data} />;
 };
