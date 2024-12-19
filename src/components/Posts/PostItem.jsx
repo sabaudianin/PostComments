@@ -1,6 +1,7 @@
 import { ListItem, ListItemText, Button, Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { DeletePost } from "./DeletePost";
+import { StyledButton } from "../Elements/Button";
 
 export const PostItem = ({ post }) => {
   const { id, title, content, author } = post;
@@ -64,16 +65,14 @@ export const PostItem = ({ post }) => {
         >
           Author: {author}
         </Typography>
-        <Button
+        <StyledButton
           component={Link}
           to={`/posts/${id}`}
-          variant="contained"
           sx={{
             width: "100%",
             mb: 1,
             backgroundColor: "#F8F8F8",
             color: "#101010",
-            fontWeight: "bold",
             "&:hover": {
               backgroundColor: "#606060",
               color: "white",
@@ -81,7 +80,7 @@ export const PostItem = ({ post }) => {
           }}
         >
           Read More
-        </Button>
+        </StyledButton>
         <DeletePost postId={id} />
       </Box>
     </ListItem>

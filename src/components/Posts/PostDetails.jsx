@@ -15,7 +15,6 @@ export const PostDetails = () => {
   if (!post) {
     return <p>No Posts Available</p>;
   }
-  console.log("Posts", post);
 
   return (
     <Container

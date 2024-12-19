@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { TextField, Button, Box, Container } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { StyledButton } from "../Elements/Button";
 import { useSnackbar } from "../../context/SnackbarContext";
 import { useAddPost } from "../../hooks/usePosts";
 import { postSchema } from "../../hooks/validationSchema";
@@ -25,7 +25,6 @@ export const PostForm = ({ setShowForm }) => {
       { collectionName: "posts", data },
       {
         onSuccess: () => {
-          console.log("Snackbar success trigger");
           showSnackbar("Post added successfully!", "success");
           timeoutRef.current = setTimeout(() => setShowForm(false), 100);
         },
@@ -42,7 +41,6 @@ export const PostForm = ({ setShowForm }) => {
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
-        console.log("timeout cleared");
       }
     };
   }, []);
@@ -91,19 +89,15 @@ export const PostForm = ({ setShowForm }) => {
           helperText={errors?.content?.message}
         />
 
-        <Button
+        <StyledButton
           type="submit"
-          variant="contained"
           sx={{
-            padding: "0.75rem",
-            fontSize: "1rem",
-            fontWeight: "bold",
-            textTransform: "none",
             backgroundColor: "secondary.main",
+            color: "#fff",
           }}
         >
           Send Post
-        </Button>
+        </StyledButton>
       </Box>
     </Container>
   );

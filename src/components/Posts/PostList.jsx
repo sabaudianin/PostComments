@@ -2,7 +2,7 @@ import { useState } from "react";
 import { List, Paper, Typography, Box, Container, Button } from "@mui/material";
 import { FaWindowClose } from "react-icons/fa";
 import { MdAddComment } from "react-icons/md";
-
+import { StyledButton } from "../Elements/Button";
 import { PostItem } from "./PostItem";
 import { PostForm } from "./PostForm";
 
@@ -24,7 +24,6 @@ export const PostList = ({ data }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          // marginBottom: ".5rem",
           flexWrap: "wrap",
         }}
       >
@@ -43,25 +42,14 @@ export const PostList = ({ data }) => {
         >
           Dive into content or create it !
         </Typography>
-        <Button
+        <StyledButton
           onClick={() => setShowForm(!showForm)}
           sx={{
-            display: "flex",
             width: "100%",
+            display: "flex",
             alignItems: "center",
             gap: "1rem",
-            padding: "0.75rem 1rem",
-            fontWeight: "bold",
-            textTransform: "none",
-            backgroundColor: "#F8F8F8",
-            boxShadow: "5px 5px 6px #808080",
-            color: "#000",
             mb: 1,
-
-            "&:hover": {
-              boxShadow: "5px 5px 16px #808080 ",
-              backgroundColor: "#E0E0E0",
-            },
           }}
         >
           {showForm ? (
@@ -72,7 +60,7 @@ export const PostList = ({ data }) => {
             />
           )}
           {showForm ? "Cancel Post" : "Create Post"}
-        </Button>
+        </StyledButton>
       </Box>
 
       {showForm && (
