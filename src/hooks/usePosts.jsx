@@ -25,6 +25,7 @@ export const useGetPosts = (collectionName) => {
 // Add a new post
 export const useAddPost = () => {
   const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: ({ collectionName, data }) => addDocument(collectionName, data),
     onSuccess: (_, { collectionName }) =>

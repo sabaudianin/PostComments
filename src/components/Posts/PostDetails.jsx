@@ -82,6 +82,16 @@ export const PostDetails = () => {
           >
             Author: {post.author}
           </Typography>
+          <Typography
+            variant="caption"
+            sx={{
+              color: "#333",
+              textShadow: "1px 1px 3px rgba(0,0,0,0.2)",
+              textAlign: "center",
+            }}
+          >
+            Date: {post.createdAt}
+          </Typography>
 
           <Box
             sx={{

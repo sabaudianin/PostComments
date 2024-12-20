@@ -6,6 +6,7 @@ import { StyledButton } from "../Elements/Button";
 import { useSnackbar } from "../../context/SnackbarContext";
 import { useAddPost } from "../../hooks/usePosts";
 import { postSchema } from "../../hooks/validationSchema";
+import { serverTimestamp } from "firebase/firestore";
 
 export const PostForm = ({ setShowForm }) => {
   const {
@@ -20,9 +21,13 @@ export const PostForm = ({ setShowForm }) => {
   const { showSnackbar } = useSnackbar();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const postData = {
+      ...data,
+      createdAt: new Date().toLocaleString(),
+    };
+    console.log(postData);
     addPost(
-      { collectionName: "posts", data },
+      { collectionName: "posts", data: postData },
       {
         onSuccess: () => {
           showSnackbar("Post added successfully!", "success");
