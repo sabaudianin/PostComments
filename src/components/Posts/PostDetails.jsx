@@ -1,14 +1,33 @@
 import { useParams } from "react-router-dom";
-
+import { increment } from "firebase/firestore";
 import { Typography, Paper, Box, Container, Button } from "@mui/material";
 import { BiSolidUpvote, BiSolidDownvote } from "react-icons/bi";
-import { useGetPostById } from "../../hooks/usePosts";
+import { useGetPostById, useUpdatePost } from "../../hooks/usePosts";
+
 import { CommentsContainer } from "../Comments/CommentsContainer";
 
 export const PostDetails = () => {
   const { id } = useParams();
   const { data: post, isLoading, isError, error } = useGetPostById(id, "posts");
   console.log(id);
+
+  const { mutate: updatePost } = useUpdatePost();
+
+  const handleVoteDown = () => {
+    updatePost({
+      collectionName: "posts",
+      postId: id,
+      updatedData: { voteDown: increment(1) },
+    });
+  };
+
+  const handleVoteUp = () => {
+    updatePost({
+      collectionName: "posts",
+      postId: id,
+      updatedData: { voteUp: increment(1) },
+    });
+  };
 
   if (isLoading) return <p>Loading post details...</p>;
   if (isError) return <p>Error: {error.message}</p>;
@@ -111,7 +130,7 @@ export const PostDetails = () => {
                   gap: "0.5rem",
                   padding: "0.5rem 1rem",
                 }}
-                onClick={() => console.log("Voted up!")}
+                onClick={handleVoteUp}
               >
                 <BiSolidUpvote style={{ fontSize: "1.2rem" }} />
               </Button>
@@ -134,7 +153,7 @@ export const PostDetails = () => {
                   gap: "0.5rem",
                   padding: "0.5rem 1rem",
                 }}
-                onClick={() => console.log("Voted down!")} //
+                onClick={handleVoteDown} //
               >
                 <BiSolidDownvote style={{ fontSize: "1.2rem" }} />
               </Button>
