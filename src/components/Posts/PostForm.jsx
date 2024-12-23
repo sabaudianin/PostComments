@@ -24,6 +24,8 @@ export const PostForm = ({ setShowForm }) => {
     const postData = {
       ...data,
       createdAt: new Date().toLocaleString(),
+      voteUp: 0,
+      voteDown: 0,
     };
     console.log(postData);
     addPost(

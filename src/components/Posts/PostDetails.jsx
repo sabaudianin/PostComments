@@ -12,9 +12,6 @@ export const PostDetails = () => {
 
   if (isLoading) return <p>Loading post details...</p>;
   if (isError) return <p>Error: {error.message}</p>;
-  if (!post) {
-    return <p>No Posts Available</p>;
-  }
 
   return (
     <Container
@@ -102,37 +99,52 @@ export const PostDetails = () => {
               marginTop: "1rem",
             }}
           >
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: "#4caf50",
-                color: "#fff",
-                "&:hover": { backgroundColor: "#388e3c" },
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                padding: "0.5rem 1rem",
-              }}
-              onClick={() => console.log("Voted up!")}
-            >
-              <BiSolidUpvote style={{ fontSize: "1.2rem" }} />
-            </Button>
-
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: "#f44336",
-                color: "#fff",
-                "&:hover": { backgroundColor: "#d32f2f" },
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                padding: "0.5rem 1rem",
-              }}
-              onClick={() => console.log("Voted down!")} //
-            >
-              <BiSolidDownvote style={{ fontSize: "1.2rem" }} />
-            </Button>
+            <Box>
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#4caf50",
+                  color: "#fff",
+                  "&:hover": { backgroundColor: "#388e3c" },
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  padding: "0.5rem 1rem",
+                }}
+                onClick={() => console.log("Voted up!")}
+              >
+                <BiSolidUpvote style={{ fontSize: "1.2rem" }} />
+              </Button>
+              <Typography
+                variant="subtitle2"
+                sx={{ textAlign: "center" }}
+              >
+                Up:{post.voteUp}
+              </Typography>
+            </Box>
+            <Box>
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#f44336",
+                  color: "#fff",
+                  "&:hover": { backgroundColor: "#d32f2f" },
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  padding: "0.5rem 1rem",
+                }}
+                onClick={() => console.log("Voted down!")} //
+              >
+                <BiSolidDownvote style={{ fontSize: "1.2rem" }} />
+              </Button>
+              <Typography
+                variant="subtitle2"
+                sx={{ textAlign: "center" }}
+              >
+                Down:{post.voteDown}
+              </Typography>
+            </Box>
           </Box>
         </Paper>
       </Box>

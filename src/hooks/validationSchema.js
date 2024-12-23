@@ -5,7 +5,7 @@ export const commentsSchema = z.object({
   description: z
     .string()
     .min(2, "Minium 2 letters")
-    .max(480, "Maximum 480 letters"),
+    .max(440, "Maximum 440 letters"),
 });
 
 export const postSchema = z.object({
@@ -14,5 +14,5 @@ export const postSchema = z.object({
   content: z
     .string()
     .min(16, " Post without content, Minium 16 letters")
-    .max(480, "Maximum 480 letters"),
+    .max(2280, "Maximum 1280 letters"),
 });

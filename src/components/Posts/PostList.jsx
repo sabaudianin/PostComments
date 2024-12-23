@@ -80,20 +80,30 @@ export const PostList = ({ data }) => {
           gap: "1.5rem",
         }}
       >
-        {data?.map((post) => (
-          <Paper
-            key={post.id}
-            elevation={3}
-            sx={{
-              padding: ".4rem",
-              borderRadius: "8px",
-              backgroundColor: "#f5f5f5",
-              boxShadow: "5px 5px 6px #808080",
-            }}
+        {data.length > 0 ? (
+          data.map((post) => (
+            <Paper
+              key={post.id}
+              elevation={3}
+              sx={{
+                padding: ".4rem",
+                borderRadius: "8px",
+                backgroundColor: "#f5f5f5",
+                boxShadow: "5px 5px 6px #808080",
+              }}
+            >
+              <PostItem post={post} />
+            </Paper>
+          ))
+        ) : (
+          <Typography
+            variant="h6"
+            sx={{ p: 10 }}
           >
-            <PostItem post={post} />
-          </Paper>
-        ))}
+            There are no posts available at the moment. Be the first to share
+            your thoughts and create one now!
+          </Typography>
+        )}
       </List>
     </Container>
   );
