@@ -18,6 +18,7 @@ export const Comments = ({
       <Box
         sx={{
           p: 1,
+
           background: "#b3b3b3",
           border: "2px  solid #ccc",
           borderRadius: 2,

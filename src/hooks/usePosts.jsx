@@ -8,11 +8,15 @@ import {
 } from "../api/fireStoreFunctions";
 
 // Get all posts from a collection
-export const useGetPosts = (collectionName) => {
+export const useGetPosts = (
+  collectionName,
+  sortField = null,
+  sortOrder = "asc"
+) => {
   return useQuery({
-    queryKey: [collectionName],
+    queryKey: [collectionName, sortField, sortOrder],
     queryFn: async () => {
-      const data = await getDocuments(collectionName);
+      const data = await getDocuments(collectionName, sortField, sortOrder);
       console.log("useQuery: received data", data);
       return data;
     },

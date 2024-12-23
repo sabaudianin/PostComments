@@ -13,8 +13,8 @@ export const PostList = ({ data }) => {
     <Container
       sx={{
         boxShadow: "0px 4px 10px black",
-        padding: 2,
-        paddingTop: 4,
+        // padding: 4,
+        paddingY: 3,
         background: " #ebf0f7",
         height: "100%",
       }}

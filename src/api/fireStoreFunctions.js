@@ -8,6 +8,7 @@ import {
   deleteDoc,
   doc,
   updateDoc,
+  orderBy,
 } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
@@ -25,13 +26,23 @@ export const addDocument = async (collectionName, data) => {
 };
 
 //Fn do pobierania dokumentów z kolekcji
-export const getDocuments = async (collectionName) => {
+export const getDocuments = async (
+  collectionName,
+  sortField = null,
+  sortOrder = "asc"
+) => {
   if (!collectionName) {
     throw new Error("Collection name is required to fetch documents.");
   }
 
   try {
-    const querySnapshot = await getDocs(collection(db, collectionName));
+    //zapytanie z sortowaniem
+    let queryRef = collection(db, collectionName);
+    if (sortField) {
+      queryRef = query(queryRef, orderBy(sortField, sortOrder));
+    }
+
+    const querySnapshot = await getDocs(queryRef);
     console.log("QuerySnapshot:", querySnapshot.docs);
 
     const documents = querySnapshot.docs.map((doc) => ({
