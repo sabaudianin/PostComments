@@ -18,9 +18,10 @@ export const Nav = () => {
     <AppBar
       position="static"
       sx={{
-        background: "linear-gradient(135deg, #D3D3D3, #A9A9A9, #696969)",
+        background:
+          "linear-gradient(135deg,rgb(71, 67, 67),rgb(205, 225, 195),rgb(20, 21, 20))",
         padding: "0.5rem",
-        boxShadow: "4px 4px 10px black ",
+        boxShadow: "4px 4px 10px #000 ",
       }}
     >
       <Toolbar

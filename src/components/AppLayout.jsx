@@ -7,7 +7,7 @@ export const AppLayout = () => {
     <Box
       sx={{
         // height: "100vh",
-        width: "100%",
+        // width: "100%",
         display: "flex",
         justifyContent: "center",
         flexWrap: "wrap",

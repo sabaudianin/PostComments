@@ -19,7 +19,7 @@ export const PostFilter = ({ data }) => {
   );
 
   return (
-    <Box>
+    <Box sx={{}}>
       <SearchPost
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
