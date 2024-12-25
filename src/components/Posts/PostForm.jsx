@@ -55,7 +55,6 @@ export const PostForm = ({ setShowForm }) => {
   return (
     <Container
       sx={{
-        marginTop: ".5rem",
         padding: "1rem",
         backgroundColor: "#f5f5f5",
         borderRadius: "8px",

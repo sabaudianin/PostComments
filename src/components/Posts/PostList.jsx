@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { List, Paper, Typography, Box, Container, Button } from "@mui/material";
 import { FaWindowClose } from "react-icons/fa";
+import { GrAdd } from "react-icons/gr";
+import { MdOutlineAdd } from "react-icons/md";
+
 import { MdAddComment } from "react-icons/md";
 import { StyledButton } from "../Elements/Button";
 import { PostItem } from "./PostItem";
@@ -10,13 +13,14 @@ export const PostList = ({ data }) => {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <Container
+    <Box
       sx={{
         boxShadow: "0px 4px 10px black",
         // padding: 4,
         paddingY: 3,
         background: " #ebf0f7",
         height: "100%",
+        width: "100%",
       }}
     >
       <Box
@@ -45,17 +49,17 @@ export const PostList = ({ data }) => {
         <StyledButton
           onClick={() => setShowForm(!showForm)}
           sx={{
-            width: "100%",
+            width: "90%",
             display: "flex",
             alignItems: "center",
             gap: "1rem",
-            mb: 1,
+            m: "auto",
           }}
         >
           {showForm ? (
             <FaWindowClose style={{ fontSize: "1.5rem", color: "red" }} />
           ) : (
-            <MdAddComment
+            <MdOutlineAdd
               style={{ fontSize: "1.5rem", color: "secondary.main" }}
             />
           )}
@@ -66,7 +70,7 @@ export const PostList = ({ data }) => {
       {showForm && (
         <Box
           sx={{
-            marginBottom: "2rem",
+            mb: "1rem",
           }}
         >
           <PostForm setShowForm={setShowForm} />
@@ -78,6 +82,7 @@ export const PostList = ({ data }) => {
           display: "flex",
           flexDirection: "column",
           gap: "1.5rem",
+          mt: "1rem",
         }}
       >
         {data.length > 0 ? (
@@ -105,6 +110,6 @@ export const PostList = ({ data }) => {
           </Typography>
         )}
       </List>
-    </Container>
+    </Box>
   );
 };
