@@ -6,7 +6,6 @@ export const AppLayout = () => {
   return (
     <Box
       sx={{
-        // height: "100vh",
         width: "100%",
         display: "flex",
         justifyContent: "center",
@@ -17,7 +16,7 @@ export const AppLayout = () => {
       }}
     >
       <Nav />
-      <Box sx={{ minHeight: "100vh" }}>
+      <Box sx={{ minHeight: "100vh", width: "100%" }}>
         <Outlet />
       </Box>
     </Box>

@@ -18,10 +18,9 @@ export const Nav = () => {
     <AppBar
       position="static"
       sx={{
-        background:
-          "linear-gradient(135deg,rgb(71, 67, 67),rgb(205, 225, 195),rgb(20, 21, 20))",
+        background: "linear-gradient(135deg,#D3D3D3,#f8f8ff,#D3D3D3)",
         padding: "0.5rem",
-        boxShadow: "4px 4px 10px #000 ",
+        boxShadow: "0px 4px 10px #000 inset ",
       }}
     >
       <Toolbar
@@ -36,7 +35,7 @@ export const Nav = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            borderRadius: "4px",
+            // borderRadius: "4px",
           }}
         >
           <CustomLink to="/">

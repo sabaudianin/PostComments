@@ -35,6 +35,8 @@ export const PostDetails = () => {
   return (
     <Container
       sx={{
+        width: "100%",
+        minHeight: "100vh",
         paddingY: 4,
         background: "#ebf0f7",
         boxShadow: "0px 4px 10px black",
@@ -46,6 +48,7 @@ export const PostDetails = () => {
           padding: ".25rem",
           borderRadius: "4px",
           boxShadow: "2px 2px 2px black",
+          width: "100%",
         }}
       >
         <Paper
