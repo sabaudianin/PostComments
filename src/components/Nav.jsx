@@ -1,16 +1,9 @@
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Box,
-  TextField,
-  Link,
-} from "@mui/material";
-import { MdLocalPostOffice } from "react-icons/md";
+import { AppBar, Toolbar, Typography, Box } from "@mui/material";
+
 import { IoHome } from "react-icons/io5";
-import { FaCommentAlt } from "react-icons/fa";
+
 import { BsPostcardFill } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+
 import { CustomLink } from "./Elements/Link";
 
 export const Nav = () => {
@@ -26,7 +19,7 @@ export const Nav = () => {
       <Toolbar
         sx={{
           display: "flex",
-          justifyContent: { xs: "space-between", lg: "space-evenly" },
+          justifyContent: { xs: "space-between", lg: "space-around" },
           alignItems: "center",
         }}
       >
@@ -35,7 +28,7 @@ export const Nav = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            // borderRadius: "4px",
+            borderRadius: "4px",
           }}
         >
           <CustomLink to="/">

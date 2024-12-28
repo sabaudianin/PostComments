@@ -49,7 +49,7 @@ export const PostList = ({ data }) => {
         <StyledButton
           onClick={() => setShowForm(!showForm)}
           sx={{
-            width: "90%",
+            width: "92%",
             display: "flex",
             alignItems: "center",
             gap: "1rem",
@@ -80,7 +80,9 @@ export const PostList = ({ data }) => {
       <List
         sx={{
           display: "flex",
-          flexDirection: "column",
+          flexDirection: { xs: "column", lg: "row" },
+          flexWrap: "wrap",
+          justifyContent: "center",
           gap: "1.5rem",
           mt: "1rem",
         }}
@@ -95,6 +97,7 @@ export const PostList = ({ data }) => {
                 borderRadius: "8px",
                 backgroundColor: "#f5f5f5",
                 boxShadow: "5px 5px 6px #808080",
+                width: { xs: "100%", lg: "45%" },
               }}
             >
               <PostItem post={post} />
