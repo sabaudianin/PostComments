@@ -16,3 +16,9 @@ export const postSchema = z.object({
     .min(16, " Post without content, Minium 16 letters")
     .max(2280, "Maximum 1280 letters"),
 });
+export const updatePostSchema = z.object({
+  content: z
+    .string()
+    .min(16, " Post without content, Minium 16 letters")
+    .max(2280, "Maximum 1280 letters"),
+});
