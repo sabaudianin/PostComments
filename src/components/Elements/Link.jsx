@@ -6,6 +6,7 @@ export const CustomLink = ({ children, to }) => {
     <Link
       to={to}
       component={NavLink}
+      onClick={console.log("clicked")}
       sx={{
         color: "secondary.main",
         textDecoration: "none",
@@ -14,6 +15,7 @@ export const CustomLink = ({ children, to }) => {
         fontSize: { xs: "1rem", sm: "1.5rem" },
         transition: ".5",
         textAlign: "center",
+
         "&:hover": {
           background: "#b3b3b3 ",
           cursor: "pointer",

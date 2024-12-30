@@ -1,12 +1,11 @@
 import { useEffect, useRef } from "react";
-import { TextField, Button, Box, Container } from "@mui/material";
+import { TextField, Box, Container } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { StyledButton } from "../Elements/Button";
 import { useSnackbar } from "../../context/SnackbarContext";
 import { useAddPost } from "../../hooks/usePosts";
 import { postSchema } from "../../hooks/validationSchema";
-import { serverTimestamp } from "firebase/firestore";
 
 export const PostForm = ({ setShowForm }) => {
   const {

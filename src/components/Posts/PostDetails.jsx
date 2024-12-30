@@ -3,7 +3,7 @@ import { increment } from "firebase/firestore";
 import { Typography, Paper, Box, Container, Button } from "@mui/material";
 import { BiSolidUpvote, BiSolidDownvote } from "react-icons/bi";
 import { useGetPostById, useUpdatePost } from "../../hooks/usePosts";
-
+import { UpdatePost } from "./UpdatePost";
 import { CommentsContainer } from "../Comments/CommentsContainer";
 
 export const PostDetails = () => {
@@ -167,6 +167,10 @@ export const PostDetails = () => {
               </Typography>
             </Box>
           </Box>
+          <UpdatePost
+            postId={id}
+            post={post}
+          />
         </Paper>
       </Box>
       <CommentsContainer postId={id} />
