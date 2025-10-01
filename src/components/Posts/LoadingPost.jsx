@@ -18,6 +18,7 @@ export const LoadingPost = () => {
         sx={{
           background: "#f2f2f2",
           padding: 5,
+          width: "100%",
           transform: "translateY(-50%)",
         }}
       >

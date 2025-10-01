@@ -9,7 +9,12 @@ export const Comments = ({
   error,
   handleAddComment,
 }) => {
-  if (isLoading) return <p>Loading comments...</p>;
+  if (isLoading)
+    return (
+      <Container>
+        <p>Loading comments...</p>
+      </Container>
+    );
   if (isError) return <p>Error: {error.message}</p>;
 
   return (

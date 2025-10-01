@@ -12,14 +12,14 @@ export const Nav = () => {
       position="static"
       sx={{
         background: "linear-gradient(135deg,#D3D3D3,#f8f8ff,#D3D3D3)",
-        padding: "0.5rem",
+        padding: "1rem",
         boxShadow: "0px 4px 10px #000 inset ",
       }}
     >
       <Toolbar
         sx={{
           display: "flex",
-          justifyContent: { xs: "space-between", lg: "space-around" },
+          justifyContent: { xs: "flex-start", lg: "flex-start" },
           alignItems: "center",
         }}
       >

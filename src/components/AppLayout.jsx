@@ -15,8 +15,8 @@ export const AppLayout = () => {
         backgroundSize: "100% 100%",
       }}
     >
-      <Nav />
-      <Box sx={{ minHeight: "100vh", width: "100%", maxWidth: "1200px" }}>
+      <Box sx={{ minHeight: "100vh", width: "100%", maxWidth: "1300px" }}>
+        <Nav />
         <Outlet />
       </Box>
     </Box>
